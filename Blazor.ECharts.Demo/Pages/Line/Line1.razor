@@ -1,0 +1,102 @@
+﻿@page "/line/line1"
+@using Blazor.ECharts.Option
+@using Blazor.ECharts.Option.Enum
+@using Blazor.ECharts.Option.Series.Line
+
+<div class="container">
+    <ECLine Id="line1" Option="@Model1" Class="chart-normal"></ECLine>
+    <ECLine Id="line2" Option="@Model2" Class="chart-normal"></ECLine>
+    <ECLine Id="line3" Option="@Model3" Class="chart-normal"></ECLine>
+</div>
+
+@code{
+    private EChartsOption<Line> Model1;
+    private EChartsOption<Line> Model2;
+    private EChartsOption<Line> Model3;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        Model1 = new EChartsOption<Line>()
+        {
+            Title = new Title()
+            {
+                Text = "折线图"
+            },
+            YAxis = new List<Axis>()
+{
+                new Axis()
+                {
+                    Type = AxisType.Value
+                }
+            },
+            XAxis = new Axis()
+            {
+                Type = AxisType.Category,
+                Data = new[] { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" }
+            },
+            Series = new List<Line>() {
+                new Line()
+                {
+                    Type = "line",
+                    Data = new[] { 820, 932, 901, 934, 1290, 1330, 1320 }
+                }
+            }
+        };
+        Model2 = new EChartsOption<Line>()
+        {
+            Title = new Title()
+            {
+                Text = "区域图"
+            },
+            YAxis = new List<Axis>()
+{
+                new Axis()
+                {
+                    Type = AxisType.Value
+                }
+            },
+            XAxis = new Axis()
+            {
+                Type = AxisType.Category,
+                Data = new[] { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" },
+                BoundaryGap = false
+            },
+            Series = new List<Line>() {
+                new Line()
+                {
+                    Type = "line",
+                    Data = new[] { 820, 932, 901, 934, 1290, 1330, 1320 },
+                    AreaStyle = new AreaStyle()
+                }
+            }
+        };
+        Model3 = new EChartsOption<Line>()
+        {
+            Title = new Title()
+            {
+                Text = "平滑折线图"
+            },
+            YAxis = new List<Axis>()
+{
+                new Axis()
+                {
+                    Type = AxisType.Value
+                }
+            },
+            XAxis = new Axis()
+            {
+                Type = AxisType.Category,
+                Data = new[] { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" }
+            },
+            Series = new List<Line>() {
+                new Line()
+                {
+                    Type = "line",
+                    Data = new[] { 820, 932, 901, 934, 1290, 1330, 1320 },
+                    Smooth = true
+                }
+            }
+        };
+    }
+}
