@@ -46,7 +46,7 @@ namespace Blazor.ECharts.Option
 
         /// <summary>
         /// dataZoom 组件 用于区域缩放，从而能自由关注细节的数据信息，或者概览数据整体，或者去除离群点的影响。
-        /// <para>详细设置见：https://www.echartsjs.com/zh/option.html#dataZoom </para>
+        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#dataZoom ">此处</see>查看详细设置</para>
         /// </summary>
         public List<object> DataZoom { set; get; }
 
@@ -58,7 +58,7 @@ namespace Blazor.ECharts.Option
 
         /// <summary>
         /// 背景色，默认无背景。
-        /// <para>详细设置见：https://www.echartsjs.com/zh/option.html#backgroundColor </para>
+        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#backgroundColor ">此处</see>查看详细设置</para>
         /// </summary>
         public object BackgroundColor { set; get; }
 
@@ -79,7 +79,7 @@ namespace Blazor.ECharts.Option
 
         /// <summary>
         /// 初始动画的时长，支持回调函数，可以通过每个数据返回不同的 delay 时间实现更戏剧的初始动画效果。
-        /// <para>详细设置见：https://www.echartsjs.com/zh/option.html#animationDuration </para>
+        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#animationDuration ">此处</see>查看详细设置</para>
         /// </summary>
         public object AnimationDuration { set; get; }
 
@@ -90,13 +90,13 @@ namespace Blazor.ECharts.Option
 
         /// <summary>
         /// 初始动画的延迟，支持回调函数，可以通过每个数据返回不同的 delay 时间实现更戏剧的初始动画效果。
-        /// <para>详细设置见：https://www.echartsjs.com/zh/option.html#animationDelay </para>
+        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#animationDelay ">此处</see>查看详细设置</para>
         /// </summary>
         public object AnimationDelay { set; get; }
 
         /// <summary>
         /// 数据更新动画的时长。支持回调函数，可以通过每个数据返回不同的 delay 时间实现更戏剧的更新动画效果
-        /// <para>详细设置见：https://www.echartsjs.com/zh/option.html#animationDurationUpdate </para>
+        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#animationDurationUpdate ">此处</see>查看详细设置</para>
         /// </summary>
         public object AnimationDurationUpdate { set; get; }
 
@@ -107,25 +107,25 @@ namespace Blazor.ECharts.Option
 
         /// <summary>
         /// 数据更新动画的延迟，支持回调函数，可以通过每个数据返回不同的 delay 时间实现更戏剧的更新动画效果。
-        /// <para>详细设置见：https://www.echartsjs.com/zh/option.html#animationDelayUpdate </para>
+        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#animationDelayUpdate ">此处</see>查看详细设置</para>
         /// </summary>
         public object AnimationDelayUpdate { set; get; }
 
         /// <summary>
         /// 图形的混合模式，不同的混合模式见 https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation 。
-        /// <para>详细设置见：https://www.echartsjs.com/zh/option.html#blendMode </para>
+        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#blendMode ">此处</see>查看详细设置</para>
         /// </summary>
         public string BlendMode { set; get; }
 
         /// <summary>
         /// 图形数量阈值，决定是否开启单独的 hover 层，在整个图表的图形数量大于该阈值时开启单独的 hover 层。
-        /// <para>详细设置见：https://www.echartsjs.com/zh/option.html#hoverLayerThreshold </para>
+        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#hoverLayerThreshold ">此处</see>查看详细设置</para>
         /// </summary>
         public int? HoverLayerThreshold { set; get; }
 
         /// <summary>
         /// 是否使用 UTC 时间。
-        /// <para>详细设置见：https://www.echartsjs.com/zh/option.html#useUTC </para>
+        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#useUTC ">此处</see>查看详细设置</para>
         /// </summary>
         public bool? UseUTC { set; get; }
     }

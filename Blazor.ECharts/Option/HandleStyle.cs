@@ -6,7 +6,7 @@ namespace Blazor.ECharts.Option
     {
         /// <summary>
         /// 图形的描边颜色。支持的颜色格式同 color，不支持回调函数。
-        /// <para>详细设置见：https://www.echartsjs.com/zh/option.html#dataZoom-slider.handleStyle.borderColor </para>
+        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#dataZoom-slider.handleStyle.borderColor ">此处</see>查看详细设置</para>
         /// </summary>
         public object BorderColor { set; get; }
 

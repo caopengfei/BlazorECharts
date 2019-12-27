@@ -28,13 +28,13 @@ namespace Blazor.ECharts.Option.Series.Line
 
         /// <summary>
         /// 标记的图形
-        /// <para>详细设置见：https://www.echartsjs.com/zh/option.html#series-line.symbol </para>
+        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#series-line.symbol ">此处</see>查看详细设置</para>
         /// </summary>
         public string Symbol { set; get; }
 
         /// <summary>
         /// 标记的大小
-        /// <para>详细设置见：https://www.echartsjs.com/zh/option.html#series-line.symbolSize </para>
+        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#series-line.symbolSize ">此处</see>查看详细设置</para>
         /// </summary>
         public string SymbolSize { set; get; }
 
@@ -79,7 +79,7 @@ namespace Blazor.ECharts.Option.Series.Line
 
         /// <summary>
         /// 数据堆叠，同个类目轴上系列配置相同的stack值后，后一个系列的值会在前一个系列的值上相加。
-        /// <para>详细设置见：https://www.echartsjs.com/zh/option.html#series-line.stack </para>
+        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#series-line.stack ">此处</see>查看详细设置</para>
         /// </summary>
         public string Stack { set; get; }
 
@@ -106,7 +106,7 @@ namespace Blazor.ECharts.Option.Series.Line
 
         /// <summary>
         /// 是否是阶梯线图。可以设置为 true 显示成阶梯线图，也支持设置成 'start', 'middle', 'end' 分别配置在当前点，当前点与下个点的中间点，下个点拐弯。
-        /// <para>详细设置见：https://www.echartsjs.com/zh/option.html#series-line.step </para>
+        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#series-line.step ">此处</see>查看详细设置</para>
         /// </summary>
         public bool? Step { set; get; }
 
@@ -139,7 +139,7 @@ namespace Blazor.ECharts.Option.Series.Line
 
         /// <summary>
         /// 系列中的数据内容数组。数组项通常为具体的数据项。
-        /// <para>详细设置见：https://www.echartsjs.com/zh/option.html#series-line.data </para>
+        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#series-line.data ">此处</see>查看详细设置</para>
         /// </summary>
         public object Data { set; get; }
     }
