@@ -19,10 +19,20 @@ namespace Blazor.ECharts
         {
             try
             {
+                if (model == null) return new ValueTask();
                 //var data = JsonConvert.SerializeObject(model, Formatting.None, JsonSerializerSettings);
                 //Console.WriteLine(data);
-                return jsRuntime.InvokeVoidAsync("setupChart", id, JsonConvert.SerializeObject(model, Formatting.None, JsonSerializerSettings));
-                //return jsRuntime.InvokeVoidAsync("setupChart", id, model);
+                object Tooltip_Position = null;
+                if (model.Tooltip != null && model.Tooltip.Position != null && model.Tooltip.Position.ToString().Contains("function"))
+                {
+                    //Tooltip_Position = new Newtonsoft.Json.Linq.JRaw(model.Tooltip.Position.ToString());
+                    Tooltip_Position = model.Tooltip.Position.ToString();
+                    model.Tooltip.Position = null;
+                }
+                return jsRuntime.InvokeVoidAsync("setupChart", 
+                    id, 
+                    JsonConvert.SerializeObject(model, Formatting.None, JsonSerializerSettings),
+                    Tooltip_Position);
             }
             catch (Exception exp)
             {

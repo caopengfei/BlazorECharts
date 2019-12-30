@@ -36,7 +36,7 @@ namespace Blazor.ECharts.Option.Series.Line
         /// 标记的大小
         /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#series-line.symbolSize ">此处</see>查看详细设置</para>
         /// </summary>
-        public string SymbolSize { set; get; }
+        public object SymbolSize { set; get; }
 
         /// <summary>
         /// 标记的旋转角度。注意在 markLine 中当 symbol 为 'arrow' 时会忽略 symbolRotate 强制设置为切线的角度。
@@ -138,9 +138,25 @@ namespace Blazor.ECharts.Option.Series.Line
         public MarkArea MarkArea { set; get; }
 
         /// <summary>
+        /// 折线图在数据量远大于像素点时候的降采样策略，开启后可以有效的优化图表的绘制效率，默认关闭，也就是全部绘制不过滤数据点。
+        /// </summary>
+        public Sampling? Sampling { set; get; }
+
+        /// <summary>
+        /// 折线拐点标志的样式。
+        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#series-line.itemStyle">此处</see>查看详细设置</para>
+        /// </summary>
+        public ItemStyle ItemStyle { set; get; }
+
+        /// <summary>
         /// 系列中的数据内容数组。数组项通常为具体的数据项。
         /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#series-line.data ">此处</see>查看详细设置</para>
         /// </summary>
         public object Data { set; get; }
+
+        /// <summary>
+        /// 图表标线。
+        /// </summary>
+        public MarkLine MarkLine { set; get; }
     }
 }

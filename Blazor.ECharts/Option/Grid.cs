@@ -57,12 +57,12 @@
         /// <summary>
         /// 图例组件的宽度。默认自适应。
         /// </summary>
-        public int? Width { set; get; }
+        public object Width { set; get; }
 
         /// <summary>
         /// 图例组件的高度。默认自适应。
         /// </summary>
-        public int? Height { set; get; }
+        public object Height { set; get; }
 
         /// <summary>
         /// grid 区域是否包含坐标轴的刻度标签。

@@ -53,6 +53,32 @@ namespace Blazor.ECharts.Option
         /// 坐标轴轴线相关设置。
         /// </summary>
         public AxisLine AxisLine { set; get; }
+
+        /// <summary>
+        /// x或y 轴所在的 grid 的索引，默认位于第一个 grid。
+        /// </summary>
+        public int? GridIndex { set; get; }
+
+        /// <summary>
+        /// 坐标轴在 grid 区域中的分隔线。
+        /// </summary>
+        public SplitLine SplitLine { set; get; }
+    }
+    public class XAxis:Axis
+    {
+
+        /// <summary>
+        /// x 轴的位置。
+        /// </summary>
+        public PositionX? Position { set; get; }
+    }
+    public class YAxis : Axis
+    {
+
+        /// <summary>
+        /// x 轴的位置。
+        /// </summary>
+        public PositionY Position { set; get; }
     }
 
     public class AxisLine

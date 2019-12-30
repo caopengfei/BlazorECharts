@@ -65,10 +65,17 @@ namespace Blazor.ECharts.Option.Enum
     }
 
     [JsonConverter(typeof(CustomEnumConverter))]
-    public enum Position
+    public enum PositionY
     {
         Start,
         End
+    }
+
+    [JsonConverter(typeof(CustomEnumConverter))]
+    public enum PositionX
+    {
+        Top,
+        Bottom
     }
 
     /// <summary>
@@ -281,5 +288,43 @@ namespace Blazor.ECharts.Option.Enum
         Solid,
         Dashed,
         Dotted
+    }
+
+    [JsonConverter(typeof(CustomEnumConverter))]
+    public enum Sampling
+    {
+        /// <summary>
+        /// 取过滤点的平均值
+        /// </summary>
+        Average,
+        /// <summary>
+        /// 取过滤点的最大值
+        /// </summary>
+        Max,
+        /// <summary>
+        /// 取过滤点的最小值
+        /// </summary>
+        Min,
+        /// <summary>
+        ///  取过滤点的和
+        /// </summary>
+        Sum
+    }
+
+
+    /// <summary>
+    /// 渐变类型
+    /// </summary>
+    [JsonConverter(typeof(CustomEnumConverter))]
+    public enum ColorType
+    {
+        /// <summary>
+        /// 线性渐变，前四个参数分别是 x0, y0, x2, y2, 范围从 0 - 1，相当于在图形包围盒中的百分比，如果 globalCoord 为 `true`，则该四个值是绝对的像素位置
+        /// </summary>
+        Linear,
+        /// <summary>
+        /// 径向渐变，前三个参数分别是圆心 x, y 和半径，取值同线性渐变
+        /// </summary>
+        Radial
     }
 }

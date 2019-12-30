@@ -23,17 +23,20 @@
             {
                 Text = "折线图"
             },
-            YAxis = new List<Axis>()
+            YAxis = new List<YAxis>()
 {
-                new Axis()
+                new YAxis()
                 {
                     Type = AxisType.Value
                 }
             },
-            XAxis = new Axis()
+            XAxis = new List<XAxis>()
             {
-                Type = AxisType.Category,
-                Data = new[] { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" }
+                new XAxis()
+                {
+                    Type = AxisType.Category,
+                    Data = new[] { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" }
+                }
             },
             Series = new List<Line>() {
                 new Line()
@@ -49,18 +52,21 @@
             {
                 Text = "区域图"
             },
-            YAxis = new List<Axis>()
+            YAxis = new List<YAxis>()
 {
-                new Axis()
+                new YAxis()
                 {
                     Type = AxisType.Value
                 }
             },
-            XAxis = new Axis()
+            XAxis = new List<XAxis>() 
             {
-                Type = AxisType.Category,
-                Data = new[] { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" },
-                BoundaryGap = false
+                new XAxis()
+                {
+                    Type = AxisType.Category,
+                    Data = new[] { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" },
+                    BoundaryGap = false
+                }
             },
             Series = new List<Line>() {
                 new Line()
@@ -77,17 +83,20 @@
             {
                 Text = "平滑折线图"
             },
-            YAxis = new List<Axis>()
+            YAxis = new List<YAxis>()
 {
-                new Axis()
+                new YAxis()
                 {
                     Type = AxisType.Value
                 }
             },
-            XAxis = new Axis()
+            XAxis = new List<XAxis>()
             {
-                Type = AxisType.Category,
-                Data = new[] { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" }
+                new XAxis()
+                {
+                    Type = AxisType.Category,
+                    Data = new[] { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" }
+                }
             },
             Series = new List<Line>() {
                 new Line()

@@ -232,7 +232,7 @@ namespace Blazor.ECharts.Option
         /// legend.type 为 'scroll' 时有效。图例控制块的位置。
         /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#legend.pageButtonPosition ">此处</see>查看详细设置</para>
         /// </summary>
-        public Position? PageButtonPosition { set; get; }
+        public PositionY? PageButtonPosition { set; get; }
 
         /// <summary>
         /// legend.type 为 'scroll' 时有效。图例控制块中，页信息的显示格式。默认为 '{current}/{total}'，其中 {current} 是当前页号（从 1 开始计数），{total} 是总页数。

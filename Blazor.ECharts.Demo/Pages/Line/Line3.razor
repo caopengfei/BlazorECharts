@@ -19,18 +19,21 @@
             {
                 Text = "堆叠折线图"
             },
-            YAxis = new List<Axis>()
+            YAxis = new List<YAxis>()
 {
-                new Axis()
+                new YAxis()
                 {
                     Type = AxisType.Value
                 }
             },
-            XAxis = new Axis()
+            XAxis = new List<XAxis>()
             {
-                Type = AxisType.Category,
-                Data = new[] { "周一", "周二", "周三", "周四", "周五", "周六", "周日" },
-                BoundaryGap = false
+                new XAxis()
+                {
+                    Type = AxisType.Category,
+                    Data = new[] { "周一", "周二", "周三", "周四", "周五", "周六", "周日" },
+                    BoundaryGap = false
+                }
             },
             Series = new List<Line>() {
                 new Line()
@@ -72,7 +75,7 @@
             Tooltip = new Tooltip()
             {
                 Trigger = TooltipTrigger.Axis,
-                AxisPointer = new AxisPointer()
+                AxisPointer = new TooltipAxisPointer()
                 {
                     Type = AxisPointerType.Cross,
                     Label = new AxisPointerLabel()
@@ -86,12 +89,15 @@
                 Data = new[] { "邮件营销", "联盟广告", "视频广告", "直接访问", "搜索引擎" }
             },
             Toolbox = new Toolbox() { Feature = new Feature() { SaveAsImage = new SaveAsImage() } },
-            Grid = new Grid()
+            Grid = new List<Grid>() 
             {
-                Left = "3%",
-                Right = "4%",
-                Bottom = "3%",
-                ContainLabel = true
+                new Grid()
+                {
+                    Left = "3%",
+                    Right = "4%",
+                    Bottom = "3%",
+                    ContainLabel = true
+                }
             }
         };
     }

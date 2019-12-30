@@ -17,12 +17,12 @@ namespace Blazor.ECharts.Option
         /// <summary>
         /// 直角坐标系 grid 中的 x 轴，一般情况下单个 grid 组件最多只能放上下两个 x 轴，多于两个 x 轴需要通过配置 offset 属性防止同个位置多个 x 轴的重叠。
         /// </summary>
-        public Axis XAxis { set; get; }
+        public List<XAxis> XAxis { set; get; }
 
         /// <summary>
         /// 直角坐标系 grid 中的 y 轴，一般情况下单个 grid 组件最多只能放左右两个 y 轴，多于两个 y 轴需要通过配置 offset 属性防止同个位置多个 Y 轴的重叠。
         /// </summary>
-        public List<Axis> YAxis { set; get; }
+        public List<YAxis> YAxis { set; get; }
 
         /// <summary>
         /// 系列列表。每个系列通过 type 决定自己的图表类型
@@ -42,7 +42,7 @@ namespace Blazor.ECharts.Option
         /// <summary>
         /// 直角坐标系内绘图网格，单个 grid 内最多可以放置上下两个 X 轴，左右两个 Y 轴。可以在网格上绘制折线图，柱状图，散点图（气泡图）。
         /// </summary>
-        public Grid Grid { set; get; }
+        public List<Grid> Grid { set; get; }
 
         /// <summary>
         /// dataZoom 组件 用于区域缩放，从而能自由关注细节的数据信息，或者概览数据整体，或者去除离群点的影响。
@@ -128,6 +128,16 @@ namespace Blazor.ECharts.Option
         /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#useUTC ">此处</see>查看详细设置</para>
         /// </summary>
         public bool? UseUTC { set; get; }
+
+        /// <summary>
+        /// 这是坐标轴指示器（axisPointer）的全局公用设置。
+        /// </summary>
+        public AxisPointer AxisPointer { set; get; }
+
+        /// <summary>
+        /// visualMap 是视觉映射组件，用于进行『视觉编码』，也就是将数据映射到视觉元素（视觉通道）。
+        /// </summary>
+        public object VisualMap { set; get; }
     }
     
 }
