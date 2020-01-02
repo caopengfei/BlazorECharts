@@ -68,6 +68,11 @@ namespace Rakor.Blazor.ECharts.Option
         /// 坐标轴刻度标签的相关设置。
         /// </summary>
         public AxisLabel AxisLabel { set; get; }
+
+        /// <summary>
+        /// 坐标轴是否是静态无法交互。
+        /// </summary>
+        public bool? Silent { set; get; }
     }
     public class XAxis:Axis
     {
@@ -81,9 +86,9 @@ namespace Rakor.Blazor.ECharts.Option
     {
 
         /// <summary>
-        /// x 轴的位置。
+        /// y 轴的位置。
         /// </summary>
-        public PositionY Position { set; get; }
+        public PositionY? Position { set; get; }
     }
     public class AxisLabel
     {

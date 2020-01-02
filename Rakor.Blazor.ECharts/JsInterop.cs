@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Rakor.Blazor.ECharts.Option;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -70,7 +71,7 @@ namespace Rakor.Blazor.ECharts
             }
             return new ValueTask();
         }
-        private static void Reset(object option, List<JSFun> list) 
+        private static void Reset(object option, List<JSFun> list,string name=null) 
         {
             if (option == null) return;
             var properties=option.GetType().GetProperties().Where(p => p.GetIndexParameters().Length == 0);
@@ -86,9 +87,21 @@ namespace Rakor.Blazor.ECharts
                     {
                         //Console.WriteLine($"{name}的值是{value.ToString()}");
                         item.SetValue(option,null);
-                        list.Add(new JSFun($"{item.DeclaringType?.Name}.{item.Name}".ToLower(), value.ToString()));
+                        list.Add(new JSFun($"{name}.{item.Name.ToLower(1)}", value.ToString()));
                     }
-                    if (item.PropertyType != typeof(string) && item.PropertyType.BaseType!=null) Reset(value, list);
+                    string tmp = name + "." + item.Name.ToLower(1);
+                    if (item.PropertyType.BaseType != null && item.PropertyType.BaseType != typeof(ValueType))
+                    {
+                        if (value is IList temp)
+                        {
+                            for (int i = 0; i < temp.Count; i++)
+                            {
+                                Reset(temp[i], list, tmp + $"[{i}]");
+                            }
+                        }
+                        else
+                            Reset(value, list, tmp);
+                    }
                 }
             }
         }
@@ -98,9 +111,18 @@ namespace Rakor.Blazor.ECharts
             public string Action { set; get; }
             public JSFun(string name,string action) 
             {
-                Name = name;
+                Name = name.StartsWith(".")? name.Substring(1):name;
                 Action = action;
             }
+        }
+    }
+    public static class StringExt
+    {
+        public static string ToLower(this string str, int num)
+        {
+            if (string.IsNullOrWhiteSpace(str) || num <= 0) return str;
+            if (num >= str.Length) return str.ToLower();
+            return str.Substring(0, num).ToLower() + str.Substring(num);
         }
     }
 }

@@ -144,6 +144,15 @@ namespace Rakor.Blazor.ECharts.Option
         /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#graphic">此处</see>查看详细设置</para>
         /// </summary>
         public List<object> Graphic { set; get; }
+
+        public Polar Polar { set; get; }
+
+        public RadiusAxis RadiusAxis { set; get; }
+
+        /// <summary>
+        /// 极坐标系的角度轴。
+        /// </summary>
+        public AngleAxis AngleAxis { set; get; }
     }
     
 }

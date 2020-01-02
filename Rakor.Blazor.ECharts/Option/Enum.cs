@@ -311,7 +311,6 @@ namespace Rakor.Blazor.ECharts.Option.Enum
         Sum
     }
 
-
     /// <summary>
     /// 渐变类型
     /// </summary>
@@ -326,5 +325,48 @@ namespace Rakor.Blazor.ECharts.Option.Enum
         /// 径向渐变，前三个参数分别是圆心 x, y 和半径，取值同线性渐变
         /// </summary>
         Radial
+    }
+
+    /// <summary>
+    /// 动态类型
+    /// </summary>
+    [JsonConverter(typeof(CustomEnumConverter))]
+    public enum MagicTypeType
+    {
+        /// <summary>
+        /// 切换为折线图
+        /// </summary>
+        Line,
+        /// <summary>
+        /// 切换为柱状图
+        /// </summary>
+        Bar,
+        /// <summary>
+        /// 切换为堆叠模式
+        /// </summary>
+        Stack,
+        /// <summary>
+        /// 切换为平铺模式
+        /// </summary>
+        Tiled
+    }
+    /// <summary>
+    /// 特殊的标注类型，用于标注最大值最小值等。
+    /// </summary>
+    [JsonConverter(typeof(CustomEnumConverter))]
+    public enum MarkPointDataType
+    {
+        /// <summary>
+        /// 取过滤点的平均值
+        /// </summary>
+        Average,
+        /// <summary>
+        /// 取过滤点的最大值
+        /// </summary>
+        Max,
+        /// <summary>
+        /// 取过滤点的最小值
+        /// </summary>
+        Min
     }
 }

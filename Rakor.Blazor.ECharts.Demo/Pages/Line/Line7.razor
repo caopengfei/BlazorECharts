@@ -5,11 +5,11 @@
 @inject HttpClient HttpClient
 
 <div class="container">
-    <ECLine Option="@Model1" Class="chart-fill"></ECLine>
+    <ECLine Option="@Option1" Class="chart-fill"></ECLine>
 </div>
 
 @code{
-    private EChartsOption<Line> Model1;
+    private EChartsOption<Line> Option1;
 
     protected override void OnInitialized()
     {
@@ -20,7 +20,7 @@
         var time = tmp.Select(q => q[0]);
         var data = tmp.Select(q => q[1]);
 
-        Model1 = new EChartsOption<Line>()
+        Option1 = new EChartsOption<Line>()
         {
             Title=new Title() {Text="北京 AQI" },
             Tooltip=new Tooltip() {Trigger=TooltipTrigger.Axis },
@@ -45,7 +45,7 @@
                     MarkLine=new MarkLine()
                     {
                         Silent=true,
-                        Data=new List<MarkLineData>()
+                        Data=new List<object>()
                         {
                             new MarkLineData (){ YAxis=50},
                             new MarkLineData (){ YAxis=100},

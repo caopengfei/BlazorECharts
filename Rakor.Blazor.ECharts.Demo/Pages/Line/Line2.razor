@@ -4,16 +4,16 @@
 @using Rakor.Blazor.ECharts.Option.Series.Line
 
 <div class="container">
-    <ECLine Option="@Model4" Class="chart-fill"></ECLine>
+    <ECLine Option="@Option1" Class="chart-fill"></ECLine>
 </div>
 
 @code{
-    private EChartsOption<Line> Model4;
+    private EChartsOption<Line> Option1;
 
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        Model4 = new EChartsOption<Line>()
+        Option1 = new EChartsOption<Line>()
         {
             Title = new Title()
             {

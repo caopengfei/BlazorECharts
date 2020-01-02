@@ -1,0 +1,44 @@
+﻿@page "/line/line9"
+@using Rakor.Blazor.ECharts.Option
+@using Rakor.Blazor.ECharts.Option.Enum
+@using Rakor.Blazor.ECharts.Option.Series.Line
+
+<div class="container">
+    <ECLine Option="@Option1" Class="chart-fill"></ECLine>
+</div>
+
+@code{
+    private EChartsOption<Line> Option1;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        List<IEnumerable<double>> data = new List<IEnumerable<double>>();
+        double theta = 0;
+        for (int i = 0; i <= 100; i++)
+        {
+            theta = Math.Round(i / 100d * 360,4);
+            data.Add(new[] { Math.Round(5 * (1 + Math.Sin(theta / 180 * Math.PI)), 4), theta });
+        }
+
+        Option1 = new EChartsOption<Line>()
+        {
+            Title = new Title() { Text = "极坐标双数值轴" },
+            Tooltip = new Tooltip() { Trigger = TooltipTrigger.Axis,AxisPointer=new TooltipAxisPointer() { Type=AxisPointerType.Cross} },
+            Legend = new Legend() { Data = new[] { "line" } },
+            Polar=new Polar(),
+            RadiusAxis=new RadiusAxis(),
+            AngleAxis=new AngleAxis() {Type=AxisType.Value,StartAngle=0 },
+            Series=new List<Line>()
+            {
+                new Line()
+                {
+                    CoordinateSystem=CoordinateSystem.Polar,
+                    Name="line",
+                    Data=data
+                }
+            }
+        };
+    }
+}

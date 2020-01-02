@@ -1,0 +1,65 @@
+﻿@page "/bar/bar2"
+@using Rakor.Blazor.ECharts.Option
+@using Rakor.Blazor.ECharts.Option.Enum
+@using Rakor.Blazor.ECharts.Option.Series.Bar
+
+<div class="container">
+    <ECBar Option="@Option1" Class="chart-fill"></ECBar>
+</div>
+
+@code{
+    private EChartsOption<Bar> Option1;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        List<string> xAxisData = new List<string>();
+        List<double> data1 = new List<double>();
+        List<double> data2 = new List<double>();
+        for (int i = 0; i < 100; i++)
+        {
+            xAxisData.Add("类目" + i);
+            data1.Add(Math.Round((Math.Sin(i / 5) * (i / 5 - 10) + i / 6) * 5, 4));
+            data2.Add(Math.Round((Math.Cos(i / 5) * (i / 5 - 10) + i / 6) * 5, 4));
+        }
+
+        Option1 = new EChartsOption<Bar>()
+        {
+            Title=new Title() {Text="柱状图动画延迟" },
+            Legend=new Legend() {Align=Align1.Left,Data=new[] { "bar","bar2"} },
+            Toolbox=new Toolbox()
+            {
+                Feature=new Feature()
+                {
+                    MagicType=new MagicType() {Type=new List<MagicTypeType>() {MagicTypeType.Stack,MagicTypeType.Tiled } },
+                    DataView=new DataView(),
+                    SaveAsImage=new SaveAsImage() {PixelRatio=2 }
+                }
+            },
+            Tooltip=new Tooltip(),
+            XAxis=new List<XAxis>()
+            {
+                new XAxis(){Data=xAxisData,Silent=false,SplitLine=new SplitLine(){Show=false } }
+            },
+            YAxis=new List<YAxis>() { new YAxis()},
+            Series=new List<Bar>()
+            {
+                new Bar()
+                {
+                    Name="bar",
+                    Data=data1,
+                    AnimationDelay="function (idx) {return idx * 10;}"
+                },
+                new Bar()
+                {
+                    Name="bar2",
+                    Data=data2,
+                    AnimationDelay="function (idx) {return idx * 10 + 100;}"
+                }
+            },
+            AnimationEasing="elasticOut",
+            AnimationDelayUpdate="function (idx) {return idx * 5;}"
+        };
+    }
+}

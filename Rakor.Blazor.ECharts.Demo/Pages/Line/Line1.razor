@@ -4,20 +4,20 @@
 @using Rakor.Blazor.ECharts.Option.Series.Line
 
 <div class="container">
-    <ECLine Option="@Model1" Class="chart-normal"></ECLine>
-    <ECLine Option="@Model2" Class="chart-normal"></ECLine>
-    <ECLine Option="@Model3" Class="chart-normal"></ECLine>
+    <ECLine Option="@Option1" Class="chart-normal"></ECLine>
+    <ECLine Option="@Option2" Class="chart-normal"></ECLine>
+    <ECLine Option="@Option3" Class="chart-normal"></ECLine>
 </div>
 
 @code{
-    private EChartsOption<Line> Model1;
-    private EChartsOption<Line> Model2;
-    private EChartsOption<Line> Model3;
+    private EChartsOption<Line> Option1;
+    private EChartsOption<Line> Option2;
+    private EChartsOption<Line> Option3;
 
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        Model1 = new EChartsOption<Line>()
+        Option1 = new EChartsOption<Line>()
         {
             Title = new Title()
             {
@@ -46,7 +46,7 @@
                 }
             }
         };
-        Model2 = new EChartsOption<Line>()
+        Option2 = new EChartsOption<Line>()
         {
             Title = new Title()
             {
@@ -77,7 +77,7 @@
                 }
             }
         };
-        Model3 = new EChartsOption<Line>()
+        Option3 = new EChartsOption<Line>()
         {
             Title = new Title()
             {

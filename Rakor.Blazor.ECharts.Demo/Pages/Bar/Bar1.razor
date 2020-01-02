@@ -4,17 +4,17 @@
 @using Rakor.Blazor.ECharts.Option.Series.Bar
 
 <div class="container">
-    <ECBar Option="@Model1" Class="chart-fill"></ECBar>
+    <ECBar Option="@Option1" Class="chart-fill"></ECBar>
 </div>
 
 @code{
-    private EChartsOption<Bar> Model1;
+    private EChartsOption<Bar> Option1;
 
     protected override void OnInitialized()
     {
         base.OnInitialized();
 
-        Model1 = new EChartsOption<Bar>()
+        Option1 = new EChartsOption<Bar>()
         {
             Color = new[] { "#8EC9EB" },
             Legend = new Legend() { Data = "高度(km)与气温(°C)变化关系" },

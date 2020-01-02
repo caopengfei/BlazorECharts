@@ -138,6 +138,11 @@ namespace Rakor.Blazor.ECharts.Option.Series.Line
         public MarkArea MarkArea { set; get; }
 
         /// <summary>
+        /// 图表标注。
+        /// </summary>
+        public MarkPoint MarkPoint { set; get; }
+
+        /// <summary>
         /// 折线图在数据量远大于像素点时候的降采样策略，开启后可以有效的优化图表的绘制效率，默认关闭，也就是全部绘制不过滤数据点。
         /// </summary>
         public Sampling? Sampling { set; get; }

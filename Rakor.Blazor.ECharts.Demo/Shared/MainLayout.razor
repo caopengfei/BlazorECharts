@@ -1,6 +1,6 @@
 ﻿@inherits LayoutComponentBase
 
-<BAdmin Menus="Menus" NavigationTitle="ECharts 示例" DefaultRoute="/line/line5" Style="width:400px" EnablePermissionMenus="false"></BAdmin>
+<BAdmin Menus="Menus" NavigationTitle="ECharts 示例" DefaultRoute="/line/line1" EnablePermissionMenus="false"></BAdmin>
 
 @code{
     protected List<MenuModel> Menus { get; set; } = new List<MenuModel>();
@@ -45,6 +45,21 @@
                Label="北京 AQI",
             Icon = "el-icon-tickets",
                Route="/line/line7"
+              },
+                 new MenuModel(){
+               Label="未来一周气温变化",
+            Icon = "el-icon-tickets",
+               Route="/line/line8"
+              },
+                 new MenuModel(){
+               Label="极坐标双数值轴1",
+            Icon = "el-icon-tickets",
+               Route="/line/line9"
+              },
+                 new MenuModel(){
+               Label="极坐标双数值轴2",
+            Icon = "el-icon-tickets",
+               Route="/line/line10"
               }
              }
         });
@@ -57,6 +72,10 @@
                Label="高度(km)与气温(°C)变化关系",
             Icon = "el-icon-tickets",
                Route="/bar/bar1"
+              },new MenuModel(){
+               Label="柱状图动画延迟",
+            Icon = "el-icon-tickets",
+               Route="/bar/bar2"
               }
              }
         });

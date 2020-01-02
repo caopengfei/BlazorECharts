@@ -23,5 +23,11 @@
         /// 系列名称，用于tooltip的显示，legend 的图例筛选，在 setOption 更新数据和配置项时用于指定对应的系列。
         /// </summary>
         public string Name { set; get; }
+
+        /// <summary>
+        /// 初始动画的延迟，支持回调函数，可以通过每个数据返回不同的 delay 时间实现更戏剧的初始动画效果。
+        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#series-bar.markPoint.animationDelay">此处</see>查看详细设置</para>
+        /// </summary>
+        public object AnimationDelay { set; get; }
     }
 }
