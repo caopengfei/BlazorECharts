@@ -2,6 +2,7 @@
 @using Rakor.Blazor.ECharts.Option
 @using Rakor.Blazor.ECharts.Option.Enum
 @using Rakor.Blazor.ECharts.Option.Series.Bar
+@using Newtonsoft.Json.Linq
 
 <div class="container">
     <ECBar Option="@Option1" Class="chart-fill"></ECBar>
@@ -26,40 +27,40 @@
 
         Option1 = new EChartsOption<Bar>()
         {
-            Title=new Title() {Text="柱状图动画延迟" },
-            Legend=new Legend() {Align=Align1.Left,Data=new[] { "bar","bar2"} },
-            Toolbox=new Toolbox()
+            Title = new Title() { Text = "柱状图动画延迟" },
+            Legend = new Legend() { Align = Align1.Left, Data = new[] { "bar", "bar2" } },
+            Toolbox = new Toolbox()
             {
-                Feature=new Feature()
+                Feature = new Feature()
                 {
-                    MagicType=new MagicType() {Type=new List<MagicTypeType>() {MagicTypeType.Stack,MagicTypeType.Tiled } },
-                    DataView=new DataView(),
-                    SaveAsImage=new SaveAsImage() {PixelRatio=2 }
+                    MagicType = new MagicType() { Type = new List<MagicTypeType>() { MagicTypeType.Stack, MagicTypeType.Tiled } },
+                    DataView = new DataView(),
+                    SaveAsImage = new SaveAsImage() { PixelRatio = 2 }
                 }
             },
-            Tooltip=new Tooltip(),
-            XAxis=new List<XAxis>()
-            {
+            Tooltip = new Tooltip(),
+            XAxis = new List<XAxis>()
+        {
                 new XAxis(){Data=xAxisData,Silent=false,SplitLine=new SplitLine(){Show=false } }
             },
-            YAxis=new List<YAxis>() { new YAxis()},
-            Series=new List<Bar>()
-            {
+            YAxis = new List<YAxis>() { new YAxis() },
+            Series = new List<Bar>()
+        {
                 new Bar()
                 {
                     Name="bar",
                     Data=data1,
-                    AnimationDelay="function (idx) {return idx * 10;}"
+                    AnimationDelay=new JRaw("function (idx) {return idx * 10;}")
                 },
                 new Bar()
                 {
                     Name="bar2",
                     Data=data2,
-                    AnimationDelay="function (idx) {return idx * 10 + 100;}"
+                    AnimationDelay=new JRaw("function (idx) {return idx * 10 + 100;}")
                 }
             },
-            AnimationEasing="elasticOut",
-            AnimationDelayUpdate="function (idx) {return idx * 5;}"
+            AnimationEasing = "elasticOut",
+            AnimationDelayUpdate = new JRaw("function (idx) {return idx * 5;}")
         };
     }
 }
