@@ -29,11 +29,12 @@ window.setupChart = function (id, option) {
     console.log('参数：');
     console.log(option);
     var opt = eval('(' + option + ')');
-    var chart = getChart(id);
-    if (chart === null) {
-        //chart = echarts.init(document.getElementById(id), null, { renderer: 'svg' });
-        chart = echarts.init(document.getElementById(id));
-        addChart(id, chart);
-    }
-    chart.setOption(opt);
+    //var chart = getChart(id);
+    //if (chart === null) {
+    //    //chart = echarts.init(document.getElementById(id), null, { renderer: 'svg' });
+    //    chart = echarts.init(document.getElementById(id));
+    //    addChart(id, chart);
+    //}
+    //chart.setOption(opt);
+    echarts.init(document.getElementById(id)).setOption(opt);
 };
