@@ -1,5 +1,6 @@
 ﻿using Microsoft.JSInterop;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 using Rakor.Blazor.ECharts.Option;
 using System;
@@ -39,6 +40,21 @@ namespace Rakor.Blazor.ECharts
                 Console.Error.WriteLine($"Error while setting up chart: {exp.Message}");
             }
             return new ValueTask();
+        }
+    }
+
+    public static class StringExt
+    {
+        /// <summary>
+        /// 将字符串转换为 javascript function 对象
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static JRaw ToJRaw(this string str) 
+        {
+            if (string.IsNullOrWhiteSpace(str)) throw new InvalidOperationException("不能为空");
+            if (!str.StartsWith("function")) throw new InvalidOperationException("格式不正确");
+            return new JRaw(str);
         }
     }
 }

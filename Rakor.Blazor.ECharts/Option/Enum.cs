@@ -369,4 +369,28 @@ namespace Rakor.Blazor.ECharts.Option.Enum
         /// </summary>
         Min
     }
+
+    /// <summary>
+    /// 标签的位置。
+    /// </summary>
+    [JsonConverter(typeof(CustomEnumConverter))]
+    public enum PieLabelPosition
+    {
+        /// <summary>
+        /// 饼图扇区外侧，通过视觉引导线连到相应的扇区。
+        /// </summary>
+        Uutside,
+        /// <summary>
+        /// 饼图扇区内部。
+        /// </summary>
+        Inside,
+        /// <summary>
+        /// 同 'inside'
+        /// </summary>
+        Inner,
+        /// <summary>
+        /// 在饼图中心位置。见圆环图示例
+        /// </summary>
+        Center
+    }
 }

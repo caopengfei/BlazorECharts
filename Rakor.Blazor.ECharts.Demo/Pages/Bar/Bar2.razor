@@ -2,7 +2,7 @@
 @using Rakor.Blazor.ECharts.Option
 @using Rakor.Blazor.ECharts.Option.Enum
 @using Rakor.Blazor.ECharts.Option.Series.Bar
-@using Newtonsoft.Json.Linq
+@using Rakor.Blazor.ECharts
 
 <div class="container">
     <ECBar Option="@Option1" Class="chart-fill"></ECBar>
@@ -50,17 +50,17 @@
                 {
                     Name="bar",
                     Data=data1,
-                    AnimationDelay=new JRaw("function (idx) {return idx * 10;}")
+                    AnimationDelay="function (idx) {return idx * 10;}".ToJRaw()
                 },
                 new Bar()
                 {
                     Name="bar2",
                     Data=data2,
-                    AnimationDelay=new JRaw("function (idx) {return idx * 10 + 100;}")
+                    AnimationDelay="function (idx) {return idx * 10 + 100;}".ToJRaw()
                 }
             },
             AnimationEasing = "elasticOut",
-            AnimationDelayUpdate = new JRaw("function (idx) {return idx * 5;}")
+            AnimationDelayUpdate = "function (idx) {return idx * 5;}".ToJRaw()
         };
     }
 }

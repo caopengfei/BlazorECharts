@@ -79,5 +79,17 @@
               }
              }
         });
+        Menus.Add(new MenuModel()
+        {
+            Label = "饼图",
+            Icon = "el-icon-folder",
+            Children = new List<MenuModel>() {
+                 new MenuModel(){
+               Label="基础饼图",
+            Icon = "el-icon-tickets",
+               Route="/pie/pie1"
+              }
+             }
+        });
     }
 }

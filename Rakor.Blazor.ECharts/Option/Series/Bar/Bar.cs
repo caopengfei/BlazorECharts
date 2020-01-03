@@ -1,5 +1,8 @@
 ﻿namespace Rakor.Blazor.ECharts.Option.Series.Bar
 {
+    /// <summary>
+    /// 柱状图
+    /// </summary>
     public class Bar : SeriesBase
     {
         public Bar() : base("bar") { }

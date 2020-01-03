@@ -2,6 +2,9 @@
 
 namespace Rakor.Blazor.ECharts.Option.Series.Line
 {
+    /// <summary>
+    /// 折线图
+    /// </summary>
     public class Line : SeriesBase
     {
         public Line() : base("line") { }

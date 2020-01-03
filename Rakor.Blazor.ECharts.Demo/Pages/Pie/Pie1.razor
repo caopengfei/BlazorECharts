@@ -1,0 +1,64 @@
+﻿@page "/pie/pie1"
+@using Rakor.Blazor.ECharts.Option
+@using Rakor.Blazor.ECharts.Option.Enum
+@using Rakor.Blazor.ECharts.Option.Series.Pie
+
+<div class="container">
+    <ECPie Option="@Option1" Class="chart-fill"></ECPie>
+</div>
+
+@code{
+    private EChartsOption<Pie> Option1;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        Option1 = new EChartsOption<Pie>()
+        {
+            Tooltip=new Tooltip()
+            {
+                Trigger=TooltipTrigger.Item,
+                Formatter="{a} <br/>{b}: {c} ({d}%)"
+            },
+            Legend=new Legend()
+            {
+                Orient=Orient.Vertical,
+                Left=10,
+                Data=new[] {"直接访问", "邮件营销", "联盟广告", "视频广告", "搜索引擎" }
+            },
+            Series=new List<Pie>()
+            {
+                new Pie()
+                {
+                    Name="访问来源",
+                    Radius=new []{ "50%", "70%"},
+                    AvoidLabelOverlap=false,
+                    Label=new Label()
+                    {
+                        Show=false,
+                        Position=PieLabelPosition.Center,
+                        Emphasis=new Emphasis()
+                        {
+                            Show=true,
+                            TextStyle=new TextStyle()
+                            {
+                                FontSize=30,
+                                FontWeight=FontWeight.Bold
+                            }
+                        }
+                    },
+                    LabelLine=new LabelLine(){Show=false },
+                    Data=new List<object>()
+                    {
+                        new { name="直接访问",value=335},
+                        new { name="邮件营销",value=310},
+                        new { name="联盟广告",value=234},
+                        new { name="视频广告",value=135},
+                        new { name="搜索引擎",value=1548},
+                    }
+                }
+            }
+        };
+    }
+}

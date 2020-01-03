@@ -2,7 +2,7 @@
 @using Rakor.Blazor.ECharts.Option
 @using Rakor.Blazor.ECharts.Option.Enum
 @using Rakor.Blazor.ECharts.Option.Series.Line
-@using Newtonsoft.Json.Linq
+@using Rakor.Blazor.ECharts
 
 <div class="container">
     <ECLine Option="@Option1" Class="chart-fill"></ECLine>
@@ -33,7 +33,7 @@
             Tooltip = new Tooltip()
             {
                 Trigger = TooltipTrigger.Axis,
-                Position =new JRaw("function (pt) {return [pt[0], '10%'];}")
+                Position ="function (pt) {return [pt[0], '10%'];}".ToJRaw()
             },
             Title = new Title()
             {
