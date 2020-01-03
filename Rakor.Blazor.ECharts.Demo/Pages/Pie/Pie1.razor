@@ -2,13 +2,16 @@
 @using Rakor.Blazor.ECharts.Option
 @using Rakor.Blazor.ECharts.Option.Enum
 @using Rakor.Blazor.ECharts.Option.Series.Pie
+@using Rakor.Blazor.ECharts.Option.Series
 
 <div class="container">
-    <ECPie Option="@Option1" Class="chart-fill"></ECPie>
+    <ECPie Option="@Option1" Class="chart-normal"></ECPie>
+    <ECPie Option="@Option2" Class="chart-normal"></ECPie>
 </div>
 
 @code{
     private EChartsOption<Pie> Option1;
+    private EChartsOption<Pie> Option2;
 
     protected override void OnInitialized()
     {
@@ -55,7 +58,53 @@
                         new { name="邮件营销",value=310},
                         new { name="联盟广告",value=234},
                         new { name="视频广告",value=135},
-                        new { name="搜索引擎",value=1548},
+                        new { name="搜索引擎",value=1548}
+                    }
+                }
+            }
+        };
+        Option2 = new EChartsOption<Pie>()
+        {
+            Title=new Title()
+            {
+                Text="某站点用户访问来源",
+                Subtext="纯属虚构",
+                Left="center"
+            },
+            Tooltip=new Tooltip()
+            {
+                Trigger=TooltipTrigger.Item,
+                Formatter="{a} <br/>{b}: {c} ({d}%)"
+            },
+            Legend=new Legend()
+            {
+                Orient=Orient.Vertical,
+                Left="left",
+                Data=new[] {"直接访问", "邮件营销", "联盟广告", "视频广告", "搜索引擎" }
+            },
+            Series=new List<Pie>()
+            {
+                new Pie()
+                {
+                    Name="访问来源",
+                    Radius="55%",
+                    Center=new []{ "50%","60%"},
+                    Data=new List<object>()
+                    {
+                        new { name="直接访问",value=335},
+                        new { name="邮件营销",value=310},
+                        new { name="联盟广告",value=234},
+                        new { name="视频广告",value=135},
+                        new { name="搜索引擎",value=1548}
+                    },
+                    Emphasis=new Emphasis()
+                    {
+                        ItemStyle=new ItemStyle()
+                        {
+                            ShadowBlur=10,
+                            ShadowOffsetX=0,
+                            ShadowColor="rgba(0, 0, 0, 0.5)"
+                        }
                     }
                 }
             }

@@ -31,6 +31,13 @@
         /// </summary>
         public LabelLine LabelLine { set; get; }
 
+        public object Center { set; get; }
+
+        /// <summary>
+        /// 高亮的扇区和标签样式
+        /// </summary>
+        public Emphasis Emphasis { set; get; }
+
         public object Data { set; get; }
     }
 }

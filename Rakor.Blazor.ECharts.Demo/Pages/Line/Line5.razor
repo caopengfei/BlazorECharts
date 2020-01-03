@@ -1,8 +1,9 @@
 ﻿@page "/line/line5"
+@using Rakor.Blazor.ECharts
 @using Rakor.Blazor.ECharts.Option
 @using Rakor.Blazor.ECharts.Option.Enum
+@using Rakor.Blazor.ECharts.Option.Series
 @using Rakor.Blazor.ECharts.Option.Series.Line
-@using Rakor.Blazor.ECharts
 
 <div class="container">
     <ECLine Option="@Option1" Class="chart-fill"></ECLine>
@@ -25,7 +26,7 @@
         {
             b = b.AddMilliseconds(oneDay);
             date.Add(b.ToString("yyyy/MM/dd"));
-            data.Add(Math.Round(Math.Round(random.NextDouble() - 0.5, 2) * 20 + data[i - 1],2));
+            data.Add(Math.Round(Math.Round(random.NextDouble() - 0.5, 2) * 20 + data[i - 1], 2));
         }
 
         Option1 = new EChartsOption<Line>()
@@ -33,7 +34,7 @@
             Tooltip = new Tooltip()
             {
                 Trigger = TooltipTrigger.Axis,
-                Position ="function (pt) {return [pt[0], '10%'];}".ToJRaw()
+                Position = "function (pt) {return [pt[0], '10%'];}".ToJRaw()
             },
             Title = new Title()
             {
@@ -49,8 +50,8 @@
                     SaveAsImage = new SaveAsImage()
                 }
             },
-            XAxis = new List<XAxis>() 
-            {
+            XAxis = new List<XAxis>()
+{
                 new XAxis()
                 {
                     Type = AxisType.Category,
@@ -59,11 +60,11 @@
                 }
             },
             YAxis = new List<YAxis>()
-            {
+{
                 new YAxis(){Type=AxisType.Value,BoundaryGap=new object[]{0,"100%" } }
             },
             DataZoom = new List<object>()
-            {
+{
                 new DataZoomInside()
                 {
                     Start=0,
@@ -86,7 +87,7 @@
                 }
             },
             Series = new List<Line>()
-        {
+{
                 new Line()
                 {
                     Name="模拟数据",
@@ -104,7 +105,7 @@
                             X2=0,
                             Y2=1,
                             ColorStops=new List<ColorStops>()
-                        {
+            {
                                 new ColorStops(){ Offset=0,Color="rgb(255, 158, 68)"},
                                 new ColorStops(){Offset=1,Color="rgb(255, 70, 131)"}
                             }
