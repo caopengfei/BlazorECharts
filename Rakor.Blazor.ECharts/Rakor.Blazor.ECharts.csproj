@@ -5,11 +5,13 @@
     <ApplicationIcon />
     <OutputType>Library</OutputType>
     <StartupObject />
-    <Version>0.0.1</Version>
+    <Version>0.1.0</Version>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Authors>rakor</Authors>
     <IsPackable>true</IsPackable>
-    <Description>Blazor版本的ECharts图表组件</Description>
+    <Description>Blazor版本的ECharts图表组件
+开源地址：https://github.com/caopengfei/BlazorECharts
+使用方式见Demo项目</Description>
     <AssemblyName>Rakor.Blazor.ECharts</AssemblyName>
     <RootNamespace>Rakor.Blazor.ECharts</RootNamespace>
   </PropertyGroup>
