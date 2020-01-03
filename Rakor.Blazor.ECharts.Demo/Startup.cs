@@ -1,8 +1,7 @@
-using BlazAdmin.ServerRender;
+using Blazui.Component;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,12 +25,7 @@ namespace Demo
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddServerSideBlazor(); 
-            services.AddDbContext<DemoDbContext>(options =>
-            {
-                options.UseInMemoryDatabase("demo");
-            });
-            services.AddBlazAdmin<DemoDbContext>();
+            services.AddServerSideBlazor();
             if (!services.Any(x => x.ServiceType == typeof(HttpClient)))
             {
                 // Setup HttpClient for server side in a client side compatible fashion
@@ -45,6 +39,7 @@ namespace Demo
                     };
                 });
             }
+            services.AddBlazuiServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,8 +57,7 @@ namespace Demo
             app.UseStaticFiles();
 
             app.UseRouting();
-            app.UseAuthorization();
-            app.UseAuthentication();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();

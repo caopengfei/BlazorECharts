@@ -1,5 +1,43 @@
 ﻿body {
+    margin: 0;
 }
+
+    body app {
+        display: flex;
+        height: 100vh;
+    }
+
+.blaz-layout-west .el-card {
+    border: none;
+    border-radius: 0;
+}
+
+.blaz-layout-west .el-card__header {
+    color: rgba(255,255,255,.7);
+    border: none;
+}
+
+.blaz-layout-west .el-card__body .el-menu {
+    border: none;
+}
+
+.blaz-layout-center .navbar {
+    display: flex;
+    height: 50px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 1px 4px rgba(0,21,41,.08);
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+    .blaz-layout-center .navbar .fill {
+        flex: 1;
+    }
+
+    .blaz-layout-center .navbar .tools, .blaz-layout-center .navbar .tools .el-breadcrumb {
+        line-height: 50px;
+    }
 
 .container {
     display: flex;
@@ -25,16 +63,3 @@
     margin-top: 20px;
     margin-right: 20px;
 }
-/*.link-icon {
-    width: 32px;
-    height: 32px;
-    background-image: url(../images/chart-icon.png);
-    background-size: 32px;
-    background-repeat: no-repeat;
-    content:'';
-    display:inline-block;
-}
-.link-icon-line {
-    background-position-x: -1px;
-    background-position-y: -1px;
-}*/

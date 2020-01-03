@@ -1,0 +1,119 @@
+﻿<BSimpleCard Title="ECharts 示例" Style="background-color:#20222A;" Shadow="@ShadowShowType.Never">
+    <BMenu Mode="@MenuMode.Vertical" BackgroundColor="#20222A" ActiveTextColor="#FFFFFF" TextColor="rgba(255,255,255,.7)" HoverColor="#434A50">
+        @foreach (var menu in Menus)
+        {
+            if (menu.Children != null && menu.Children.Any())
+            {
+                <BSubMenu Label="@menu.Label" Icon="@menu.Icon">
+                    @foreach (var children in menu.Children)
+                    {
+                        <BMenuItem Route="@children.Route" Icon="@children.Icon" Index="@children.Name" Model="@children">@children.Label</BMenuItem>
+                    }
+                </BSubMenu>
+            }
+            else
+            {
+                <BMenuItem Route="@menu.Route" Icon="@menu.Icon" Index="@menu.Name" Model="@menu">@menu.Label</BMenuItem>
+            }
+        }
+    </BMenu>
+</BSimpleCard>
+
+@code{
+    [Inject]
+    NavigationManager NavigationManager { get; set; }
+    protected List<MenuModel> Menus { get; set; } = new List<MenuModel>();
+
+    protected override void OnInitialized()
+    {
+        if (new Uri(NavigationManager.Uri).LocalPath == "/")
+        {
+            NavigationManager.NavigateTo("/line/line1");
+        }
+        Menus.Add(new MenuModel()
+        {
+            Label = "折线图",
+            Icon = "el-icon-folder",
+            Children = new List<MenuModel>() {
+              new MenuModel(){
+               Label="基础折线图",
+            Icon = "el-icon-tickets",
+               Route="/line/line1"
+              },
+                 new MenuModel(){
+               Label="堆叠区域图",
+            Icon = "el-icon-tickets",
+               Route="/line/line2"
+              },
+                 new MenuModel(){
+               Label="堆叠折线图",
+            Icon = "el-icon-tickets",
+               Route="/line/line3"
+              },
+                 new MenuModel(){
+               Label="雨量流量关系图1",
+            Icon = "el-icon-tickets",
+               Route="/line/line4"
+              },
+                 new MenuModel(){
+               Label="雨量流量关系图2",
+            Icon = "el-icon-tickets",
+               Route="/line/line6"
+              },
+                 new MenuModel(){
+               Label="大数据量面积图",
+            Icon = "el-icon-tickets",
+               Route="/line/line5"
+              },
+                 new MenuModel(){
+               Label="北京 AQI",
+            Icon = "el-icon-tickets",
+               Route="/line/line7"
+              },
+                 new MenuModel(){
+               Label="未来一周气温变化",
+            Icon = "el-icon-tickets",
+               Route="/line/line8"
+              },
+                 new MenuModel(){
+               Label="极坐标双数值轴1",
+            Icon = "el-icon-tickets",
+               Route="/line/line9"
+              },
+                 new MenuModel(){
+               Label="极坐标双数值轴2",
+            Icon = "el-icon-tickets",
+               Route="/line/line10"
+              }
+             }
+        });
+        Menus.Add(new MenuModel()
+        {
+            Label = "柱状图",
+            Icon = "el-icon-folder",
+            Children = new List<MenuModel>() {
+                 new MenuModel(){
+               Label="高度(km)与气温(°C)变化关系",
+            Icon = "el-icon-tickets",
+               Route="/bar/bar1"
+              },new MenuModel(){
+               Label="柱状图动画延迟",
+            Icon = "el-icon-tickets",
+               Route="/bar/bar2"
+              }
+             }
+        });
+        Menus.Add(new MenuModel()
+        {
+            Label = "饼图",
+            Icon = "el-icon-folder",
+            Children = new List<MenuModel>() {
+                 new MenuModel(){
+               Label="基础饼图",
+            Icon = "el-icon-tickets",
+               Route="/pie/pie1"
+              }
+             }
+        });
+    }
+}

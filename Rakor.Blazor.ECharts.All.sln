@@ -3,9 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rakor.Blazor.ECharts", "Rakor.Blazor.ECharts\Rakor.Blazor.ECharts.csproj", "{9CF6521D-9BAD-463C-B370-3DB2D7C2FCA0}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{EFD039F3-585A-4E2A-8F53-8C1CCB831279}"
+	ProjectSection(SolutionItems) = preProject
+		ChangeLog.md = ChangeLog.md
+		README.md = README.md
+	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo", "Rakor.Blazor.ECharts.Demo\Demo.csproj", "{32C13C1D-CBF1-4B17-8843-B8052831FBFB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{034BBB6F-E387-403E-916C-5E5333AE4DBC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rakor.Blazor.ECharts", "Rakor.Blazor.ECharts\Rakor.Blazor.ECharts.csproj", "{8BC32F32-9FC1-4575-AAEF-FC73A74520C6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo", "Rakor.Blazor.ECharts.Demo\Demo.csproj", "{F61C94BF-3940-4CEB-AFB7-FA70B2895CF0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,17 +21,21 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9CF6521D-9BAD-463C-B370-3DB2D7C2FCA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9CF6521D-9BAD-463C-B370-3DB2D7C2FCA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9CF6521D-9BAD-463C-B370-3DB2D7C2FCA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9CF6521D-9BAD-463C-B370-3DB2D7C2FCA0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{32C13C1D-CBF1-4B17-8843-B8052831FBFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{32C13C1D-CBF1-4B17-8843-B8052831FBFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{32C13C1D-CBF1-4B17-8843-B8052831FBFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{32C13C1D-CBF1-4B17-8843-B8052831FBFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BC32F32-9FC1-4575-AAEF-FC73A74520C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BC32F32-9FC1-4575-AAEF-FC73A74520C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BC32F32-9FC1-4575-AAEF-FC73A74520C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BC32F32-9FC1-4575-AAEF-FC73A74520C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F61C94BF-3940-4CEB-AFB7-FA70B2895CF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F61C94BF-3940-4CEB-AFB7-FA70B2895CF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F61C94BF-3940-4CEB-AFB7-FA70B2895CF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F61C94BF-3940-4CEB-AFB7-FA70B2895CF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8BC32F32-9FC1-4575-AAEF-FC73A74520C6} = {034BBB6F-E387-403E-916C-5E5333AE4DBC}
+		{F61C94BF-3940-4CEB-AFB7-FA70B2895CF0} = {034BBB6F-E387-403E-916C-5E5333AE4DBC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {76912AC9-447E-471E-8E59-EF381DA212AC}
