@@ -10,6 +10,12 @@ namespace Rakor.Blazor.ECharts.Option
         public string Color { set; get; }
 
         /// <summary>
+        /// 文字块背景色。
+        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#radar.name.backgroundColor">此处</see>查看详细设置</para>
+        /// </summary>
+        public object BackgroundColor { set; get; }
+
+        /// <summary>
         /// 主标题文字字体的风格
         /// </summary>
         public FontStyle? FontStyle { set; get; }
@@ -29,6 +35,16 @@ namespace Rakor.Blazor.ECharts.Option
         /// 主标题文字的字体大小
         /// </summary>
         public int? FontSize { set; get; }
+
+        /// <summary>
+        /// 文字块的圆角。
+        /// </summary>
+        public object BorderRadius { set; get; }
+
+        /// <summary>
+        /// 文字块的内边距。
+        /// </summary>
+        public object Padding { set; get; }
 
         /// <summary>
         /// 行高。

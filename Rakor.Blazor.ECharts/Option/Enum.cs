@@ -409,4 +409,14 @@ namespace Rakor.Blazor.ECharts.Option.Enum
         /// </summary>
         Multiple
     }
+
+    /// <summary>
+    /// 雷达图绘制类型
+    /// </summary>
+    [JsonConverter(typeof(CustomEnumConverter))]
+    public enum RadarShape
+    {
+        Polygon,
+        Circle
+    }
 }

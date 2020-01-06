@@ -48,12 +48,4 @@ namespace Rakor.Blazor.ECharts.Option.Series.Pie
 
         public List<object> Data { set; get; }
     }
-    public class PieData
-    {
-        public string Name { set; get; }
-        public object Value { set; get; }
-        public Tooltip Tooltip { set; get; }
-        public ItemStyle ItemStyle { set; get; }
-        public Label Label { set; get; }
-    }
 }

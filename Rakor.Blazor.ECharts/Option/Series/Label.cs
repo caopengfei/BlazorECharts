@@ -1,6 +1,6 @@
 ﻿using Rakor.Blazor.ECharts.Option.Enum;
 
-namespace Rakor.Blazor.ECharts.Option.Series.Pie
+namespace Rakor.Blazor.ECharts.Option.Series
 {
     public class Label
     {

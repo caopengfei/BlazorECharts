@@ -90,6 +90,7 @@ namespace Rakor.Blazor.ECharts.Option
         /// </summary>
         public PositionY? Position { set; get; }
     }
+
     public class AxisLabel
     {
         /// <summary>
@@ -98,11 +99,17 @@ namespace Rakor.Blazor.ECharts.Option
         /// </summary>
         public object Formatter { set; get; }
     }
+
+    /// <summary>
+    /// 坐标轴轴线相关设置。
+    /// </summary>
     public class AxisLine
     {
         /// <summary>
         /// X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一个轴为数值轴且包含 0 刻度时有效。
         /// </summary>
         public bool? OnZero { set; get; }
+
+        public LineStyle LineStyle { set; get; }
     }
 }

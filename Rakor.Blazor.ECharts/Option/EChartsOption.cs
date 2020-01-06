@@ -153,6 +153,11 @@ namespace Rakor.Blazor.ECharts.Option
         /// 极坐标系的角度轴。
         /// </summary>
         public AngleAxis AngleAxis { set; get; }
+
+        /// <summary>
+        /// 雷达图坐标系组件，只适用于雷达图。
+        /// </summary>
+        public Radar Radar { set; get; }
     }
     
 }
