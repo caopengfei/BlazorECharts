@@ -1,8 +1,8 @@
-# BlazCharts
+# BlazorCharts
 
 ## 介绍
 
-***Blazor版本的ECharts***
+***Blazor版本的ECharts图表组件***
 
 开源地址：[https://github.com/caopengfei/BlazorECharts](https://github.com/caopengfei/BlazorECharts)
 
