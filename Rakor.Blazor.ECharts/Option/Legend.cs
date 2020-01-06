@@ -263,6 +263,7 @@ namespace Rakor.Blazor.ECharts.Option
 
         /// <summary>
         /// legend.type 为 'scroll' 时有效。图例页信息的文字样式。
+        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#legend.pageTextStyle">此处</see>查看详细设置</para>
         /// </summary>
         public TextStyle PageTextStyle { set; get; }
 

@@ -21,26 +21,26 @@ namespace Rakor.Blazor.ECharts.Option
 
         /// <summary>
         /// 设置 dataZoom-inside 组件控制的 x轴（即xAxis，是直角坐标系中的概念，参见 grid）。
-        /// </summary>
         /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#dataZoom-inside.xAxisIndex ">此处</see>查看详细设置</para>
+        /// </summary>
         public object XAxisIndex { set; get; }
 
         /// <summary>
         /// 设置 dataZoom-inside 组件控制的 y轴（即yAxis，是直角坐标系中的概念，参见 grid）。
-        /// </summary>
         /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#dataZoom-inside.yAxisIndex ">此处</see>查看详细设置</para>
+        /// </summary>
         public object YAxisIndex { set; get; }
 
         /// <summary>
         /// 设置 dataZoom-inside 组件控制的 radius 轴（即radiusAxis，是直角坐标系中的概念，参见 polar）。
-        /// </summary>
         /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#dataZoom-inside.radiusAxisIndex ">此处</see>查看详细设置</para>
+        /// </summary>
         public object RadiusAxisIndex { set; get; }
 
         /// <summary>
         /// 设置 dataZoom-inside 组件控制的 angle 轴（即angleAxis，是直角坐标系中的概念，参见 polar）。
-        /// </summary>
         /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#dataZoom-inside.angleAxisIndex ">此处</see>查看详细设置</para>
+        /// </summary>
         public object AngleAxisIndex { set; get; }
 
         /// <summary>

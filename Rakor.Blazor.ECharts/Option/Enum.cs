@@ -393,4 +393,20 @@ namespace Rakor.Blazor.ECharts.Option.Enum
         /// </summary>
         Center
     }
+
+    /// <summary>
+    /// 选择模式
+    /// </summary>
+    [JsonConverter(typeof(CustomEnumConverter))]
+    public enum SelectedMode
+    {
+        /// <summary>
+        /// 单选
+        /// </summary>
+        Single,
+        /// <summary>
+        /// 多选
+        /// </summary>
+        Multiple
+    }
 }

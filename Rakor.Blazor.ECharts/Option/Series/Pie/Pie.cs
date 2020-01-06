@@ -1,4 +1,6 @@
-﻿namespace Rakor.Blazor.ECharts.Option.Series.Pie
+﻿using System.Collections.Generic;
+
+namespace Rakor.Blazor.ECharts.Option.Series.Pie
 {
     /// <summary>
     /// 饼图
@@ -38,6 +40,20 @@
         /// </summary>
         public Emphasis Emphasis { set; get; }
 
-        public object Data { set; get; }
+        /// <summary>
+        /// 选中模式，表示是否支持多个选中，默认关闭，支持布尔值和字符串，字符串取值可选'single'，'multiple'，分别表示单选还是多选。
+        /// <para>可使用枚举值 SelectedMode</para>
+        /// </summary>
+        public object SelectedMode { set; get; }
+
+        public List<object> Data { set; get; }
+    }
+    public class PieData
+    {
+        public string Name { set; get; }
+        public object Value { set; get; }
+        public Tooltip Tooltip { set; get; }
+        public ItemStyle ItemStyle { set; get; }
+        public Label Label { set; get; }
     }
 }

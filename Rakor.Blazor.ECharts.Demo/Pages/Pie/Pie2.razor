@@ -1,0 +1,91 @@
+﻿@page "/pie/pie2"
+@using Rakor.Blazor.ECharts.Option
+@using Rakor.Blazor.ECharts.Option.Enum
+@using Rakor.Blazor.ECharts.Option.Series.Pie
+@using Rakor.Blazor.ECharts.Option.Series
+
+<div class="container">
+    <ECPie Option="@Option1" Class="chart-fill"></ECPie>
+</div>
+
+@code{
+    private EChartsOption<Pie> Option1;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        Option1 = new EChartsOption<Pie>()
+        {
+            Title=new Title()
+            {
+                Text="天气情况统计",
+                Subtext="虚构数据",
+                Left="center"
+            },
+            Tooltip=new Tooltip()
+            {
+                Trigger=TooltipTrigger.Item,
+                Formatter="{a} <br/>{b} : {c} ({d}%)"
+            },
+            Legend=new Legend()
+            {
+                Bottom=10,
+                Left="center",
+                Data=new[] { "西凉", "益州", "兖州", "荆州", "幽州"}
+            },
+            Series=new List<Pie>()
+            {
+                new Pie()
+                {
+                    Radius="65%",
+                    Center=new []{"50%", "50%" },
+                    SelectedMode=SelectedMode.Single,
+                    Emphasis=new Emphasis()
+                    {
+                        ItemStyle=new ItemStyle()
+                        {
+                            ShadowBlur=10,
+                            ShadowOffsetX=0,
+                            ShadowColor="rgba(0, 0, 0, 0.5)"
+                        }
+                    },
+                    Data=new List<object>()
+                    {
+                        new PieData()
+                        {
+                            Name="幽州",
+                            Value=1548,
+                            Label=new Label()
+                            {
+                                Formatter=string.Join("\n",new []{"{title|{b}}{abg|}","  {weatherHead|天气}{valueHead|天数}{rateHead|占比}","{hr|}","  {sunny|}{value|202}{rate|55.3%}","  {cloudy|}{value|142}{rate|38.9%}","  {showers|}{value|21}{rate|5.8%}" }),
+                                BackgroundColor="#eee",
+                                BorderColor="#777",
+                                BorderWidth=1,
+                                BorderRadius=4,
+                                Rich=new
+                                {
+                                    title=new Label{Color="#eee",Align=Align2.Center },
+                                    abg=new Label{BackgroundColor="#333",Width="100%",Align=Align2.Right,Height=25,BorderRadius=new []{ 4,4,0,0,} },
+                                    sunny=new Label(){Height=30,Align=Align2.Left,BackgroundColor=new {image="https://www.echartsjs.com/data/asset/img/weather/sunny_128.png" } },
+                                    cloudy=new Label(){Height=30,Align=Align2.Left,BackgroundColor=new {image="https://www.echartsjs.com/data/asset/img/weather/cloudy_128.png" } },
+                                    showers=new Label(){Height=30,Align=Align2.Left,BackgroundColor=new {image="https://www.echartsjs.com/data/asset/img/weather/showers_128.png" } },
+                                    weatherHead=new Label(){Color="#333",Height=24,Align=Align2.Left },
+                                    hr=new Label(){BorderColor="#777",Width="100%",BorderWidth=0.5,Height=0 },
+                                    value=new Label(){Width=20,Align=Align2.Left,Padding=new []{ 0,20,0,30} },
+                                    valueHead=new Label(){Color="#333",Width=20,Align=Align2.Center,Padding=new []{ 0,20,0,30} },
+                                    rate=new Label(){Width=40,Align=Align2.Right,Padding=new []{ 0,10,0,0} },
+                                    rateHead=new Label(){Color="#333",Width=40,Align=Align2.Center,Padding=new []{ 0,10,0,0} }
+                                }
+                            }
+                        },
+                        new PieData(){ Name="荆州",Value=535},
+                        new PieData(){ Name="兖州",Value=510},
+                        new PieData(){ Name="益州",Value=634},
+                        new PieData(){ Name="西凉",Value=735},
+                    }
+                }
+            }
+        };
+    }
+}
