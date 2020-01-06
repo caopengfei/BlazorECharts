@@ -13,9 +13,6 @@ namespace Rakor.Blazor.ECharts
         [Parameter]
         public EChartsOption<T> Option { get; set; }
 
-        [Parameter]
-        public object UpdateOption { get; set; }
-
         protected bool RequireRender { get; set; }
 
         [Inject]
@@ -81,14 +78,14 @@ namespace Rakor.Blazor.ECharts
                         await OnRenderCompleted(this);
                     }
                 }
-                else
-                {
-                    await JSRuntime.UpdateChart(Id, UpdateOption).AsTask();
-                }
+                //else
+                //{
+                //    await JSRuntime.UpdateChart(Id, UpdateOption).AsTask();
+                //}
             }
             catch (Exception e)
             {
-                Console.Error.WriteLine($"Error while {(firstRender ? "setting up" : "updating")} the chart. Message:{e.Message} \n {e.StackTrace}");
+                Console.Error.WriteLine($"初始化ECharts参数失败. 错误:{e.Message} \n {e.StackTrace}");
             }
             RequireRender = false;
         }
@@ -101,7 +98,7 @@ namespace Rakor.Blazor.ECharts
             }
             catch (Exception e)
             {
-                Console.Error.WriteLine($"Error while update the chart. Message:{e.Message} \n {e.StackTrace}");
+                Console.Error.WriteLine($"更新ECharts参数失败. 错误:{e.Message} \n {e.StackTrace}");
             }
         }
 
