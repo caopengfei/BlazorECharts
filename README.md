@@ -1,15 +1,20 @@
 # BlazCharts
 
-**介绍**
+##介绍
 
-Blazor版本的ECharts
+***Blazor版本的ECharts***
+
 开源地址：https://github.com/caopengfei/BlazorECharts
+
 示例地址：http://101.132.118.176:8123/line/line1
+
 ECharts配置请参考：
+
 https://www.echartsjs.com/zh/option.html#title
+
 https://www.echartsjs.com/examples/zh/index.html
 
-**使用方式**
+##使用方式
 1. 创建Blazor项目。
 2. 在NuGet中安装包`Rakor.Blazor.ECharts`。
 3. 在 _Imports.razor 中添加`@using Rakor.Blazor.ECharts.Component`。
@@ -22,7 +27,7 @@ https://www.echartsjs.com/examples/zh/index.html
 
 **注意：因为没有设置默认的样式，所以需要在组件上设置`Class`或者`Style`来控制宽度和高度**
 
-**功能实现进度**
+##功能实现进度
 - [ ] **公共配置**
   - [x] title
   - [x] legend（部分）
