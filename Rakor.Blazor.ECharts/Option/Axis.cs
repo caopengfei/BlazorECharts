@@ -29,6 +29,12 @@ namespace Rakor.Blazor.ECharts.Option
         public object Max { set; get; }
 
         /// <summary>
+        /// 坐标轴刻度最小值。
+        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#yAxis.min ">此处</see>查看详细设置</para>
+        /// </summary>
+        public object Min { set; get; }
+
+        /// <summary>
         /// 坐标轴类型。
         /// <para>'time' 时间轴，适用于连续的时序数据，与数值轴相比时间轴带有时间的格式化，在刻度计算上也有所不同，例如会根据跨度的范围来决定使用月，星期，日还是小时范围的刻度。</para>
         /// <para>'log' 对数轴。适用于对数数据。</para>
@@ -73,6 +79,22 @@ namespace Rakor.Blazor.ECharts.Option
         /// 坐标轴是否是静态无法交互。
         /// </summary>
         public bool? Silent { set; get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool? Scale { set; get; }
+
+        /// <summary>
+        /// 坐标轴的分割段数，需要注意的是这个分割段数只是个预估值，最后实际显示的段数会在这个基础上根据分割后坐标轴刻度显示的易读程度作调整。
+        /// </summary>
+        public int? SplitNumber { set; get; }
+
+        public AxisPointer AxisPointer { set; get; }
+
+        public AxisTick AxisTick { set; get; }
+
+        public SplitArea SplitArea { set; get; }
     }
     public class XAxis:Axis
     {
@@ -90,7 +112,10 @@ namespace Rakor.Blazor.ECharts.Option
         /// </summary>
         public PositionY? Position { set; get; }
     }
-
+    public class AxisTick
+    { 
+        public bool? Show { set; get; }
+    }
     public class AxisLabel
     {
         /// <summary>
@@ -98,6 +123,8 @@ namespace Rakor.Blazor.ECharts.Option
         /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#xAxis.axisLabel.formatter">此处</see>查看详细设置</para>
         /// </summary>
         public object Formatter { set; get; }
+
+        public bool? Show { set; get; }
     }
 
     /// <summary>
@@ -105,6 +132,8 @@ namespace Rakor.Blazor.ECharts.Option
     /// </summary>
     public class AxisLine
     {
+        public bool? Show { set; get; }
+
         /// <summary>
         /// X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一个轴为数值轴且包含 0 刻度时有效。
         /// </summary>

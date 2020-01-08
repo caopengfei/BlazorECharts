@@ -10,6 +10,7 @@
 .blaz-layout-west .el-card {
     border: none;
     border-radius: 0;
+    min-width:265px;
 }
 
 .blaz-layout-west .el-card__header {

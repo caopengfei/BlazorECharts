@@ -13,6 +13,12 @@ namespace Rakor.Blazor.ECharts
         [Parameter]
         public EChartsOption<T> Option { get; set; }
 
+        /// <summary>
+        /// 默认是否呈现组件
+        /// </summary>
+        [Parameter]
+        public bool AutoShow { get; set; } = true;
+
         protected bool RequireRender { get; set; }
 
         [Inject]
@@ -68,6 +74,7 @@ namespace Rakor.Blazor.ECharts
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
+            if (AutoShow == false) return;
             try
             {
                 if (firstRender)
@@ -90,16 +97,20 @@ namespace Rakor.Blazor.ECharts
             RequireRender = false;
         }
 
-        protected async Task UpdateOptionAsync(object opt)  
+        public async Task SetupOptionAsync(EChartsOption<object> opt, bool notMerge = false)  
         {
             try
             {
-                await JSRuntime.UpdateChart(Id, opt).AsTask();
+                await JSRuntime.SetupChart(Id, opt, notMerge).AsTask();
             }
             catch (Exception e)
             {
-                Console.Error.WriteLine($"更新ECharts参数失败. 错误:{e.Message} \n {e.StackTrace}");
+                Console.Error.WriteLine($"设置ECharts参数失败. 错误:{e.Message} \n {e.StackTrace}");
             }
+        }
+        public async Task ExecFuncAsync(string func) 
+        {
+            await JSRuntime.ExecFuncAsync(Id,func);
         }
 
         public void Refresh()

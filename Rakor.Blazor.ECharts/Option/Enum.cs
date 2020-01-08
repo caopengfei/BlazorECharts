@@ -419,4 +419,36 @@ namespace Rakor.Blazor.ECharts.Option.Enum
         Polygon,
         Circle
     }
+
+    /// <summary>
+    /// 使用的按钮
+    /// </summary>
+    [JsonConverter(typeof(CustomEnumConverter))]
+    public enum BrushType
+    {
+        /// <summary>
+        /// 开启矩形选框选择功能。
+        /// </summary>
+        Rect,
+        /// <summary>
+        /// 开启任意形状选框选择功能。
+        /// </summary>
+        Polygon,
+        /// <summary>
+        /// 开启横向选择功能。
+        /// </summary>
+        LineX,
+        /// <summary>
+        /// 开启纵向选择功能。
+        /// </summary>
+        LineY,
+        /// <summary>
+        /// 切换『单选』和『多选』模式。后者可支持同时画多个选框。前者支持单击清除所有选框。
+        /// </summary>
+        Keep,
+        /// <summary>
+        /// 清空所有选框。
+        /// </summary>
+        Clear
+    }
 }

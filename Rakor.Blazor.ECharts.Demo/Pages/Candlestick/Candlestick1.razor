@@ -1,0 +1,231 @@
+﻿@page "/k/k1"
+@using Rakor.Blazor.ECharts.Option
+@using Rakor.Blazor.ECharts
+@using Rakor.Blazor.ECharts.Option.Enum
+@using Rakor.Blazor.ECharts.Option.Series.Candlestick
+@using Rakor.Blazor.ECharts.Option.Series.Line
+@using Rakor.Blazor.ECharts.Option.Series.Bar
+@using Rakor.Blazor.ECharts.Option.Series
+
+@inject HttpClient HttpClient
+
+<div class="container">
+    <ECandlestick Option="@Option1" Class="chart-fill" AutoShow="false" @ref="k"></ECandlestick>
+</div>
+
+@code{
+    private EChartsOption<object> Option1;
+    private ECandlestick k;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        var result = HttpClient.GetStringAsync("http://101.132.118.176:8124/api/kdata/300005/2019-01-01/2019-12-31").Result;
+        var stock = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Stock>>(result);
+        var category = stock.Select(item => item.Date);
+        var values = stock.Select(item => new[] { item.Open, item.Close, item.Low, item.High, item.Amount });
+        var values1 = values.ToList();
+        var volumes = stock.Select((item, index) => new[] { index, item.Amount, item.Close >= item.Open ? 1 : -1 });
+        string upColor = "#ec0000", downColor = "#00da3c";
+
+        Option1 = new EChartsOption<object>()
+        {
+            Title = new Title() { Text = "股票K线图" },
+            BackgroundColor = "#fff",
+            Animation = false,
+            Legend = new Legend()
+            {
+                Bottom = 10,
+                Left = "center",
+                Data = new[] { "股价信息", "MA5", "MA10", "MA20", "MA30" }
+            },
+            Tooltip = new Tooltip()
+            {
+                Trigger = TooltipTrigger.Axis,
+                AxisPointer = new TooltipAxisPointer() { Type = AxisPointerType.Cross },
+                BackgroundColor = "rgba(245, 245, 245, 0.8)",
+                BorderWidth = 1,
+                BorderColor = "#ccc",
+                Padding = 10,
+                TextStyle = new TextStyle() { Color = "#000" },
+                Position = "function (pos, params, el, elRect, size) {var obj = {top: 10};obj[['left', 'right'][+(pos[0] < size.viewSize[0] / 2)]] = 30;return obj;}".ToJRaw()
+            },
+            AxisPointer = new AxisPointer()
+            {
+                Link = new AxisPointerLink() { XAxisIndex = "all" },
+                Label = new AxisPointerLabel() { BackgroundColor = "#777" }
+            },
+            Toolbox = new Toolbox()
+            {
+                Feature = new Feature()
+                {
+                    DataZoom = new FeatureDataZoom() { YAxisIndex = false },
+                    Brush = new FeatureBrush() { Type = new List<BrushType>() { BrushType.LineX, BrushType.Clear } }
+                }
+            },
+            Brush = new Brush()
+            {
+                XAxisIndex = "all",
+                BrushLink = "all",
+                OutOfBrush = new { colorAlpha = 0.1 }
+            },
+            VisualMap = new VisualMapPiecewise()
+            {
+                Show = false,
+                SeriesIndex = 5,
+                Dimension=2,
+                Pieces = new List<object>()
+        {
+                    new {value=1,color= upColor},
+                    new {value=-1,color=downColor }
+                }
+            },
+            Grid = new List<Grid>()
+    {
+                new Grid(){Left="10%",Right="8%",Height="50%" },
+                new Grid(){Left="10%",Right="8%",Top="63%",Height="16%" }
+            },
+            XAxis = new List<XAxis>()
+    {
+                new XAxis()
+                {
+                    Type=AxisType.Category,
+                    Data=category,
+                    Scale=true,
+                    BoundaryGap=false,
+                    AxisLine=new AxisLine(){ OnZero=false},
+                    SplitLine=new SplitLine(){ Show=false},
+                    SplitNumber=20,
+                    Min="dataMin",
+                    Max="dataMax",
+                    AxisPointer=new AxisPointer(){Z=100 }
+                },
+                new XAxis()
+                {
+                    Type=AxisType.Category,
+                    GridIndex=1,
+                    Data=category,
+                    Scale=true,
+                    BoundaryGap=false,
+                    AxisLine=new AxisLine(){ OnZero=false},
+                    AxisTick=new AxisTick(){Show=false },
+                    SplitLine=new SplitLine(){ Show=false},
+                    AxisLabel=new AxisLabel(){ Show=false},
+                    SplitNumber=20,
+                    Min="dataMin",
+                    Max="dataMax"
+                }
+            },
+            YAxis = new List<YAxis>()
+    {
+                new YAxis()
+                {
+                    Scale=true,
+                    SplitArea=new SplitArea(){ Show=true}
+                },
+                new YAxis()
+                {
+                    Scale=true,
+                    GridIndex=1,
+                    SplitNumber=2,
+                    AxisLabel=new AxisLabel(){ Show=false},
+                    AxisLine=new AxisLine(){ Show=false},
+                    AxisTick=new AxisTick(){ Show=false},
+                    SplitLine=new SplitLine(){ Show=false},
+                }
+            },
+            DataZoom = new List<object>()
+    {
+                new DataZoomInside()
+                {
+                    XAxisIndex=new []{0,1 },
+                    Start=70,
+                    End=100
+                },
+                new DataZoomSlider()
+                {
+                    Show=true,
+                    XAxisIndex=new []{0,1 },
+                    Top="85%",
+                    Start=70,
+                    End=100
+                }
+            },
+            Series = new List<object>()
+        {
+                new Candlestick()
+                {
+                    Name="股价信息",
+                    Data=values,
+                    ItemStyle=new ItemStyle(){Color=upColor,Color0=downColor,BorderColor="null".ToJRaw(),BorderColor0="null".ToJRaw() },
+                    //Tooltip=new Tooltip()
+                    //{
+                    //    Formatter="function (param) {param = param[0];return ['Date: ' + param.name + '<hr size=1 style=\"margin: 3px 0\">','开盘价: ' + param.data[0] + '<br/>','收盘价: ' + param.data[1] + '<br/>','最低价: ' + param.data[2] + '<br/>','最高价: ' + param.data[3] + '<br/>'].join('');}".ToJRaw()
+                    //}
+                },
+                new Line()
+                {
+                    Name="MA5",
+                    Data=CalculateMA(5,values1),
+                    Smooth=true,
+                    LineStyle=new LineStyle(){Opacity=0.5 }
+                },
+                new Line()
+                {
+                    Name="MA10",
+                    Data=CalculateMA(10,values1),
+                    Smooth=true,
+                    LineStyle=new LineStyle(){Opacity=0.5 }
+                },
+                new Line()
+                {
+                    Name="MA20",
+                    Data=CalculateMA(20,values1),
+                    Smooth=true,
+                    LineStyle=new LineStyle(){Opacity=0.5 }
+                },
+                new Line()
+                {
+                    Name="MA30",
+                    Data=CalculateMA(30,values1),
+                    Smooth=true,
+                    LineStyle=new LineStyle(){Opacity=0.5 }
+                },
+                new Bar()
+                {
+                    Name="成交额",
+                    XAxisIndex=1,
+                    YAxisIndex=1,
+                    Data=volumes
+                }
+            }
+        };
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await k.SetupOptionAsync(Option1, true);
+        await k.ExecFuncAsync("dispatchAction({type: 'brush',areas: [{brushType: 'lineX',coordRange: ['2019-11-29', '2019-12-31'],xAxisIndex: 0}]});");
+    }
+
+    private List<object> CalculateMA(int day, List<double[]> data)
+    {
+        List<object> list = new List<object>();
+        for (int i = 0, count = data.Count(); i < count; i++)
+        {
+            if (i < day)
+            {
+                list.Add("-");
+                continue;
+            }
+            double sum = 0;
+            for (int j = 0; j < day; j++)
+            {
+                sum += data[i - j][1];
+            }
+            list.Add(Math.Round(sum/day, 3));
+        }
+        return list;
+    }
+}

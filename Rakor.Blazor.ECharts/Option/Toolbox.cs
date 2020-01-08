@@ -51,6 +51,17 @@ namespace Rakor.Blazor.ECharts.Option
         /// 动态类型切换
         /// </summary>
         public MagicType MagicType { set; get; }
+
+        /// <summary>
+        /// 选框组件的控制按钮。
+        /// <para>也可以不在这里指定，而是在 brush.toolbox 中指定。</para>
+        /// </summary>
+        public FeatureBrush Brush { set; get; }
+    }
+
+    public class FeatureBrush
+    { 
+        public List<BrushType> Type { set; get; }
     }
 
     public class MagicType

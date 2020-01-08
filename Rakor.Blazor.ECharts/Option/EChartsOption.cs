@@ -27,7 +27,7 @@ namespace Rakor.Blazor.ECharts.Option
         /// <summary>
         /// 系列列表。每个系列通过 type 决定自己的图表类型
         /// </summary>
-        public List<T> Series { set; get; } = new List<T>();
+        public List<object> Series { set; get; } = new List<object>();
 
         /// <summary>
         /// 图例组件。
@@ -158,6 +158,12 @@ namespace Rakor.Blazor.ECharts.Option
         /// 雷达图坐标系组件，只适用于雷达图。
         /// </summary>
         public Radar Radar { set; get; }
+
+        /// <summary>
+        /// 区域选择组件，用户可以选择图中一部分数据，从而便于向用户展示被选中数据，或者他们的一些统计计算结果。
+        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#brush">此处</see>查看详细设置</para>
+        /// </summary>
+        public Brush Brush { set; get; }
     }
     
 }

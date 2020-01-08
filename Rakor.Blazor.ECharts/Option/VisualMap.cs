@@ -5,6 +5,8 @@ namespace Rakor.Blazor.ECharts.Option
 {
     public class VisualMapPiecewise
     {
+        public bool? Show { set; get; }
+
         /// <summary>
         /// visualMap 组件离容器上侧的距离。top 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比，也可以是 'top', 'middle', 'bottom'。
         /// </summary>
@@ -26,6 +28,16 @@ namespace Rakor.Blazor.ECharts.Option
         /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#visualMap-piecewise.outOfRange">此处</see>查看详细设置</para>
         /// </summary>
         public OutOfRange OutOfRange { set; get; }
+
+        /// <summary>
+        /// 指定取哪个系列的数据，即哪个系列的 series.data。
+        /// </summary>
+        public object SeriesIndex { set; get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int? Dimension { set; get; }
     }
     public class OutOfRange
     {

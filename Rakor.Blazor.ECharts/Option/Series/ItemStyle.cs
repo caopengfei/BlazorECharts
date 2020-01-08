@@ -10,10 +10,17 @@ namespace Rakor.Blazor.ECharts.Option.Series
         /// </summary>
         public object Color { set; get; }
 
+        public object Color0 { set; get; }
+
         /// <summary>
         /// 图形的描边颜色。支持的颜色格式同 color，不支持回调函数。
         /// </summary>
         public object BorderColor { set; get; }
+
+        /// <summary>
+        /// 图形的描边颜色。支持的颜色格式同 color，不支持回调函数。
+        /// </summary>
+        public object BorderColor0 { set; get; }
 
         /// <summary>
         /// 描边线宽。为 0 时无描边。

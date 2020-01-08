@@ -12,7 +12,7 @@ namespace Rakor.Blazor.ECharts
                 writer.WriteNull();
                 return;
             }
-            writer.WriteValue(value.ToString().ToLower());
+            writer.WriteValue(value.ToString().ToLower(1));
         }
     }
 }

@@ -33,5 +33,27 @@ namespace Rakor.Blazor.ECharts.Option
         /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#tooltip.formatter">此处</see>查看详细设置</para>
         /// </summary>
         public object Formatter { set; get; }
+
+        /// <summary>
+        /// 提示框浮层的背景颜色。
+        /// </summary>
+        public object BackgroundColor { set; get; }
+
+        /// <summary>
+        /// 提示框浮层的边框宽。
+        /// </summary>
+        public int? BorderWidth { set; get; }
+
+        /// <summary>
+        /// 提示框浮层的边框颜色。
+        /// </summary>
+        public object BorderColor { set; get; }
+
+        /// <summary>
+        /// 提示框浮层内边距，单位px，默认各方向内边距为5，接受数组分别设定上右下左边距。
+        /// </summary>
+        public object Padding { set; get; }
+
+        public TextStyle TextStyle { set; get; }
     }
 }

@@ -2,6 +2,7 @@
 @using Rakor.Blazor.ECharts.Option
 @using Rakor.Blazor.ECharts.Option.Enum
 @using Rakor.Blazor.ECharts.Option.Series.Line
+
 @inject HttpClient HttpClient
 
 <div class="container">
@@ -36,7 +37,7 @@
                 new DataZoomSlider(){StartValue="2014-06-01" },
                 new DataZoomInside()
             },
-            Series=new List<Line>()
+            Series=new List<object>()
             {
                 new Line()
                 {
