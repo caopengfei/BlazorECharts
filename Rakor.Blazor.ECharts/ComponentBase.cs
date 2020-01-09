@@ -49,24 +49,6 @@ namespace Rakor.Blazor.ECharts
         {
             RequireRender = true;
         }
-
-        protected override void OnParametersSet()
-        {
-            base.OnParametersSet();
-            if (string.IsNullOrEmpty(Id)) Id = "div" + DateTime.Now.Ticks;
-        }
-        //protected override void OnInitialized()
-        //{
-        //    base.OnInitialized();
-        //    try
-        //    {
-        //        JSRuntime.InitChart(Id);
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        Console.Error.WriteLine($"Error while init the chart. Message:{e.Message} \n {e.StackTrace}");
-        //    }
-        //}
         protected override void OnAfterRender(bool firstRender)
         {
             RequireRender = false;
@@ -75,38 +57,24 @@ namespace Rakor.Blazor.ECharts
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (AutoShow == false) return;
-            try
+            if (firstRender)
             {
-                if (firstRender)
+                await JSRuntime.SetupChart(Id, Option);
+                if (OnRenderCompleted != null)
                 {
-                    await JSRuntime.SetupChart(Id, Option).AsTask();
-                    if (OnRenderCompleted != null)
-                    {
-                        await OnRenderCompleted(this);
-                    }
+                    await OnRenderCompleted(this);
                 }
-                //else
-                //{
-                //    await JSRuntime.UpdateChart(Id, UpdateOption).AsTask();
-                //}
             }
-            catch (Exception e)
-            {
-                Console.Error.WriteLine($"初始化ECharts参数失败. 错误:{e.Message} \n {e.StackTrace}");
-            }
+            //else
+            //{
+            //    await JSRuntime.UpdateChart(Id, UpdateOption).AsTask();
+            //}
             RequireRender = false;
         }
 
         public async Task SetupOptionAsync(EChartsOption<object> opt, bool notMerge = false)  
         {
-            try
-            {
-                await JSRuntime.SetupChart(Id, opt, notMerge).AsTask();
-            }
-            catch (Exception e)
-            {
-                Console.Error.WriteLine($"设置ECharts参数失败. 错误:{e.Message} \n {e.StackTrace}");
-            }
+            await JSRuntime.SetupChart(Id, opt, notMerge);
         }
         public async Task ExecFuncAsync(string func) 
         {

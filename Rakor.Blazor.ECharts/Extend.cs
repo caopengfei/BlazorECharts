@@ -2,7 +2,6 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
-using Rakor.Blazor.ECharts.Option;
 using System;
 using System.Threading.Tasks;
 
@@ -15,55 +14,28 @@ namespace Rakor.Blazor.ECharts
             NullValueHandling = NullValueHandling.Ignore,
             ContractResolver = new CamelCasePropertyNamesContractResolver()
         };
-        public static ValueTask InitChart(this IJSRuntime jsRuntime, string id)
+        public static async Task InitChart(this IJSRuntime jsRuntime, string id)
         {
-            try
-            {
-                return jsRuntime.InvokeVoidAsync("initChart", id);
-            }
-            catch (Exception exp)
-            {
-                Console.Error.WriteLine($"Error while init chart: {exp.Message}");
-            }
-            return new ValueTask();
+            if(string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException("echarts控件id不能为空");
+            await jsRuntime.InvokeVoidAsync("echartsFunctions.initChart", id);
         }
-        public static ValueTask SetupChart(this IJSRuntime jsRuntime,string id, object option,bool notMerge=false)
+        public static async Task SetupChart(this IJSRuntime jsRuntime,string id, object option,bool notMerge=false)
         {
-            try
-            {
-                if (option == null) return new ValueTask();
-                return jsRuntime.InvokeVoidAsync("setupChart", id, JsonConvert.SerializeObject(option, Formatting.None, JsonSerializerSettings), notMerge);
-            }
-            catch (Exception exp)
-            {
-                Console.Error.WriteLine($"Error while setting up chart: {exp.Message}");
-            }
-            return new ValueTask();
+            if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException("echarts控件id不能为空");
+            if (option == null) throw new ArgumentNullException("echarts参数不能为空");
+            await jsRuntime.InvokeVoidAsync("echartsFunctions.setupChart", id, JsonConvert.SerializeObject(option, Formatting.None, JsonSerializerSettings), notMerge);
         }
-        public static ValueTask UpdateChart(this IJSRuntime jsRuntime, string id, object option)
+        public static async Task UpdateChart(this IJSRuntime jsRuntime, string id, object option)
         {
-            try
-            {
-                if (option == null) return new ValueTask();
-                return jsRuntime.InvokeVoidAsync("setupChart", id, JsonConvert.SerializeObject(option, Formatting.None, JsonSerializerSettings));
-            }
-            catch (Exception exp)
-            {
-                Console.Error.WriteLine($"Error while setting up chart: {exp.Message}");
-            }
-            return new ValueTask();
+            if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException("echarts控件id不能为空");
+            if (option == null) throw new ArgumentNullException("echarts参数不能为空");
+            await jsRuntime.InvokeVoidAsync("echartsFunctions.setupChart", id, JsonConvert.SerializeObject(option, Formatting.None, JsonSerializerSettings));
         }
-        public static async Task ExecFuncAsync(this IJSRuntime jsRuntime, string id, string func) 
+        public static async Task ExecFuncAsync(this IJSRuntime jsRuntime, string id, string func)
         {
-            try
-            {
-                if (string.IsNullOrWhiteSpace(func)) return;
-                await jsRuntime.InvokeVoidAsync("execFunc", id, func);
-            }
-            catch (Exception exp)
-            {
-                Console.Error.WriteLine($"执行自定义javascript方法出错:\n方法体：{func}\n错误信息： {exp.Message}\n错误堆栈：{exp.StackTrace}");
-            }
+            if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException("echarts控件id不能为空");
+            if (string.IsNullOrWhiteSpace(func)) throw new ArgumentNullException("方法不能为空");
+            await jsRuntime.InvokeVoidAsync("echartsFunctions.execFunc", id, func);
         }
     }
 
@@ -76,7 +48,7 @@ namespace Rakor.Blazor.ECharts
         /// <returns></returns>
         public static JRaw ToJRaw(this string str) 
         {
-            if (string.IsNullOrWhiteSpace(str)) throw new InvalidOperationException("不能为空");
+            if (string.IsNullOrWhiteSpace(str)) throw new ArgumentNullException("不能为空");
             //if (!str.StartsWith("function")) throw new InvalidOperationException("格式不正确");
             return new JRaw(str);
         }

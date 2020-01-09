@@ -30,14 +30,14 @@ ECharts配置请参考：
 ## 功能实现进度
 - [ ] **公共配置**
   - [x] title
-  - [x] legend（部分）
+  - [x] legend
   - [x] grid（部分）
   - [x] xAxis（部分）
   - [x] yAxis（部分）
   - [x] polar（部分）
   - [x] radiusAxis（部分）
   - [x] angleAxis（部分）
-  - [ ] radar
+  - [x] radar（部分）
   - [x] dataZoom
   - [x] visualMap（部分）
   - [x] tooltip（部分）
@@ -74,7 +74,7 @@ ECharts配置请参考：
   - [x] 饼图（部分）
   - [ ] 散点图
   - [ ] 地理坐标/地图
-  - [ ] K线图
+  - [x] K线图（部分）
   - [ ] 雷达图
   - [ ] 盒须图
   - [ ] 热力图
