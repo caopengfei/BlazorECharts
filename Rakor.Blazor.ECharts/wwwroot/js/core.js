@@ -44,7 +44,7 @@ window.echartsFunctions = {
             echartsFunctions.addChart(id, chart);
         }
         chart.hideLoading();
-        console.log(opt);
+        //console.log(opt);
         chart.setOption(opt, notMerge);
         //echarts.init(document.getElementById(id)).setOption(opt);
     },

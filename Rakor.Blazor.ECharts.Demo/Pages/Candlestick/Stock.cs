@@ -35,14 +35,14 @@
         /// </summary>
         public double Amount { set; get; }
 
-        /// <summary>
-        /// 换手率
-        /// </summary>
-        public double Turn { set; get; }
+        ///// <summary>
+        ///// 换手率
+        ///// </summary>
+        //public double? Turn { set; get; }
 
-        /// <summary>
-        /// 涨跌幅
-        /// </summary>
-        public double PctChg { set; get; }
+        ///// <summary>
+        ///// 涨跌幅
+        ///// </summary>
+        //public double PctChg { set; get; }
     }
 }

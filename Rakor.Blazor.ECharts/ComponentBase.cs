@@ -17,7 +17,7 @@ namespace Rakor.Blazor.ECharts
         /// 默认是否呈现组件
         /// </summary>
         [Parameter]
-        public bool AutoShow { get; set; } = true;
+        public bool AutoRender { get; set; } = true;
 
         protected bool RequireRender { get; set; }
 
@@ -56,9 +56,10 @@ namespace Rakor.Blazor.ECharts
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
-            if (AutoShow == false) return;
+            if (AutoRender == false) return;
             if (firstRender)
             {
+                if (Option == null) return;
                 await JSRuntime.SetupChart(Id, Option);
                 if (OnRenderCompleted != null)
                 {

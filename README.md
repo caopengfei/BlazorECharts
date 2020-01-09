@@ -16,7 +16,7 @@ ECharts配置请参考：
 
 ## 使用方式
 1. 创建Blazor项目。
-2. 在NuGet中安装包`Rakor.Blazor.ECharts`。
+2. 在NuGet中安装包`Rakor.Blazor.ECharts` [![NuGet](https://img.shields.io/nuget/v/Rakor.Blazor.ECharts.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Rakor.Blazor.ECharts/) ![downloads](https://img.shields.io/nuget/dt/Rakor.Blazor.ECharts.svg)。
 3. 在 _Imports.razor 中添加`@using Rakor.Blazor.ECharts.Component`。
 4. 在 Pages/_Host.cshtml文件的Body中引入下面两段代码：
 ```
