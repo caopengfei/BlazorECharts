@@ -4,7 +4,7 @@
 
 **Blazor版本的ECharts图表组件**
 
-[![GitHub license](https://img.shields.io/github/license/dotnetcore/BlazorECharts.svg)](https://github.com/dotnetcore/BlazorECharts/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/caopengfei/BlazorECharts.svg)](https://github.com/caopengfei/BlazorECharts/blob/master/LICENSE)
 
 开源地址：[https://github.com/caopengfei/BlazorECharts](https://github.com/caopengfei/BlazorECharts)
 
