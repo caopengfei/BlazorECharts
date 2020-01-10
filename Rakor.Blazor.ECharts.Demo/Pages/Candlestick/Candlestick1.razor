@@ -35,6 +35,8 @@
 
     private void ShowData(string code, DateTime? start, DateTime? end)
     {
+        if (code.StartsWith("6")) code = "sh." + code;
+        else code = "sz." + code;
         if (start == null && end == null)
         {
             end = yesterday;
@@ -56,16 +58,17 @@
                 return;
             }
         }
-        string temp=HttpClient.GetStringAsync($"http://qt.gtimg.cn/q=ff_{(code.StartsWith("6")?"sh"+code:"sz"+code)}").Result.Split('~')[12];
         string ip = "172.19.233.160";
 #if DEBUG
         ip = "101.132.118.176";
 #endif
+        string temp=Newtonsoft.Json.JsonConvert.DeserializeObject<List<StockInfo>>(HttpClient.GetStringAsync($"http://{ip}:8124/api/info/{code}").Result).FirstOrDefault().Name;
         var result = HttpClient.GetStringAsync($"http://{ip}:8124/api/kdata/{code}/{start.Value.ToString("yyyy-MM-dd")}/{end.Value.ToString("yyyy-MM-dd")}").Result;
-        var stock = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Stock>>(result);
+        var stock = Newtonsoft.Json.JsonConvert.DeserializeObject<List<StockData>>(result);
         var category = stock.Select(item => item.Date);
         var values = stock.Select(item => new[] { item.Open, item.Close, item.Low, item.High, item.Amount });
         var values1 = values.ToList();
+        var liTTM=stock.Select(item => item.PeTTM);
         var volumes = stock.Select((item, index) => new[] { index, item.Amount, item.Close >= item.Open ? 1 : -1 });
         string upColor = "#ec0000", downColor = "#00da3c";
 
@@ -76,7 +79,6 @@
             Animation = false,
             Legend = new Legend()
             {
-                Bottom = 10,
                 Left = "center",
                 Data = new[] { "股价信息", "MA5", "MA10", "MA20", "MA30" }
             },
@@ -124,7 +126,8 @@
             Grid = new List<Grid>()
 {
                 new Grid(){Left="10%",Right="8%",Height="50%" },
-                new Grid(){Left="10%",Right="8%",Top="63%",Height="16%" }
+                new Grid(){Left="10%",Right="8%",Top="63%",Height="16%" },
+                new Grid(){Left="10%",Right="8%",Top="80%",Height="16%" }
             },
             XAxis = new List<XAxis>()
 {
@@ -155,6 +158,21 @@
                     SplitNumber=20,
                     Min="dataMin",
                     Max="dataMax"
+                },
+                new XAxis()
+                {
+                    Type=AxisType.Category,
+                    GridIndex=2,
+                    Data=category,
+                    Scale=true,
+                    BoundaryGap=false,
+                    AxisLine=new AxisLine(){ OnZero=false},
+                    AxisTick=new AxisTick(){Show=false },
+                    SplitLine=new SplitLine(){ Show=false},
+                    AxisLabel=new AxisLabel(){ Show=false},
+                    SplitNumber=20,
+                    Min="dataMin",
+                    Max="dataMax"
                 }
             },
             YAxis = new List<YAxis>()
@@ -173,21 +191,31 @@
                     AxisLine=new AxisLine(){ Show=false},
                     AxisTick=new AxisTick(){ Show=false},
                     SplitLine=new SplitLine(){ Show=false},
+                },
+                new YAxis()
+                {
+                    Scale=true,
+                    GridIndex=2,
+                    SplitNumber=2,
+                    AxisLabel=new AxisLabel(){ Show=false},
+                    AxisLine=new AxisLine(){ Show=false},
+                    AxisTick=new AxisTick(){ Show=false},
+                    SplitLine=new SplitLine(){ Show=false},
                 }
             },
             DataZoom = new List<object>()
 {
                 new DataZoomInside()
                 {
-                    XAxisIndex=new []{0,1 },
+                    XAxisIndex=new []{0,1,2 },
                     Start=70,
                     End=100
                 },
                 new DataZoomSlider()
                 {
                     Show=true,
-                    XAxisIndex=new []{0,1 },
-                    Top="85%",
+                    XAxisIndex=new []{0,1,2 },
+                    Top="95%",
                     Start=70,
                     End=100
                 }
@@ -238,6 +266,15 @@
                     XAxisIndex=1,
                     YAxisIndex=1,
                     Data=volumes
+                },
+                new Line()
+                {
+                    Name="滚动市盈率",
+                    Data=liTTM,
+                    XAxisIndex=2,
+                    YAxisIndex=2,
+                    Smooth=true,
+                    LineStyle=new LineStyle(){Opacity=0.5,Color="blue" }
                 }
             }
         };

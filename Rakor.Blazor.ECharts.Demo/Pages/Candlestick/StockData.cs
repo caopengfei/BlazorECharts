@@ -3,7 +3,7 @@
     /// <summary>
     /// 股票数据
     /// </summary>
-    public class Stock
+    public class StockData
     {
         /// <summary>
         /// 日期
@@ -44,5 +44,16 @@
         ///// 涨跌幅
         ///// </summary>
         //public double PctChg { set; get; }
+
+        /// <summary>
+        /// 滚动市盈率
+        /// </summary>
+        public double PeTTM { set; get; }
+    }
+
+    public class StockInfo
+    {
+        [Newtonsoft.Json.JsonProperty("code_name")]
+        public string Name { set; get; }
     }
 }
