@@ -72,7 +72,14 @@ namespace Rakor.Blazor.ECharts
             //}
             RequireRender = false;
         }
-
+        public async Task ShowLoadingAsync()
+        {
+            await JSRuntime.ShowLoadingChart(Id);
+        }
+        public async Task HideLoadingAsync()
+        {
+            await JSRuntime.HideLoadingChart(Id);
+        }
         public async Task SetupOptionAsync(EChartsOption<object> opt, bool notMerge = false)  
         {
             await JSRuntime.SetupChart(Id, opt, notMerge);

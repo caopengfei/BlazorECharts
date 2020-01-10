@@ -1,7 +1,7 @@
 ﻿using Rakor.Blazor.ECharts.Option.Enum;
 using System.Collections.Generic;
 
-namespace Rakor.Blazor.ECharts.Option.Series.Line
+namespace Rakor.Blazor.ECharts.Option.Series
 {
     /// <summary>
     /// 图表标线。
@@ -12,6 +12,11 @@ namespace Rakor.Blazor.ECharts.Option.Series.Line
         /// 图形是否不响应和触发鼠标事件，默认为 false，即响应和触发鼠标事件。
         /// </summary>
         public bool? Silent { set; get; }
+
+        /// <summary>
+        /// 标线两端的标记类型，可以是一个数组分别指定两端，也可以是单个统一指定，具体格式见 data.symbol。
+        /// </summary>
+        public object Symbol { set; get; }
 
         /// <summary>
         /// 标线的数据数组。
@@ -31,10 +36,24 @@ namespace Rakor.Blazor.ECharts.Option.Series.Line
         public Sampling? Type { set; get; }
 
         public MarkLineDataLabel Label { set; get; }
+
+        /// <summary>
+        /// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。这可以是维度的直接名称，例如折线图时可以是x、angle等、candlestick 图时可以是open、close等维度名称。
+        /// </summary>
+        public string ValueDim { set; get; }
+
+        /// <summary>
+        /// 起点标记的大小，可以设置成诸如 10 这样单一的数字，也可以用数组分开表示宽和高，例如 [20, 10] 表示标记宽为20，高为10。
+        /// </summary>
+        public object SymbolSize { set; get; }
+
+        public Emphasis Emphasis { set; get; }
     }
 
     public class MarkLineDataLabel
     {
+        public bool? Show { set; get; }
+
         /// <summary>
         /// 标签位置
         /// </summary>

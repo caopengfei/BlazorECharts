@@ -55,5 +55,11 @@
     {
         [Newtonsoft.Json.JsonProperty("code_name")]
         public string Name { set; get; }
+
+        /// <summary>
+        /// 证券类型
+        /// <para>1：股票，2：指数,3：其它</para>
+        /// </summary>
+        public int Type { set; get; }
     }
 }

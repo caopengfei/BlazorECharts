@@ -33,6 +33,22 @@ window.echartsFunctions = {
             echartsFunctions.addChart(id, chart);
         }
     },
+    showLoading: function (id) {
+        var chart = echartsFunctions.getChart(id);
+        if (chart === null) {
+            //chart = echarts.init(document.getElementById(id), null, { renderer: 'svg' });
+            chart = echarts.init(document.getElementById(id));
+            chart.showLoading();
+            echartsFunctions.addChart(id, chart);
+        }
+        else
+            chart.showLoading();
+    },
+    hideLoding: function (id) {
+        var chart = echartsFunctions.getChart(id);
+        if (chart !== null)
+            chart.hideLoading();
+    },
     setupChart: function (id, option, notMerge) {
         console.log('参数：');
         console.log(option);

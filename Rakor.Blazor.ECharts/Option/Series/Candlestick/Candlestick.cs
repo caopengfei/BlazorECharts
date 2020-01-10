@@ -10,6 +10,10 @@ namespace Rakor.Blazor.ECharts.Option.Series.Candlestick
 
         public Tooltip Tooltip { set; get; }
 
+        public MarkLine MarkLine { set; get; }
+
+        public MarkPoint MarkPoint { set; get; }
+
         public object Data { set; get; }
     }
 }

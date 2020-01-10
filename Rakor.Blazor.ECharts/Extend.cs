@@ -19,6 +19,16 @@ namespace Rakor.Blazor.ECharts
             if(string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException("echarts控件id不能为空");
             await jsRuntime.InvokeVoidAsync("echartsFunctions.initChart", id);
         }
+        public static async Task ShowLoadingChart(this IJSRuntime jsRuntime, string id)
+        {
+            if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException("echarts控件id不能为空");
+            await jsRuntime.InvokeVoidAsync("echartsFunctions.showLoading", id);
+        }
+        public static async Task HideLoadingChart(this IJSRuntime jsRuntime, string id)
+        {
+            if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException("echarts控件id不能为空");
+            await jsRuntime.InvokeVoidAsync("echartsFunctions.hideLoding", id);
+        }
         public static async Task SetupChart(this IJSRuntime jsRuntime,string id, object option,bool notMerge=false)
         {
             if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException("echarts控件id不能为空");

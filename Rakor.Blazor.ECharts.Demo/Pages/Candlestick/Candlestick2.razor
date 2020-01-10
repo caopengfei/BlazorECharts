@@ -1,4 +1,4 @@
-﻿@page "/k/k1"
+﻿@page "/k/k2"
 @using Rakor.Blazor.ECharts.Option
 @using Rakor.Blazor.ECharts
 @using Rakor.Blazor.ECharts.Option.Enum
@@ -12,7 +12,7 @@
 
 <div class="container">
     <BForm Inline="true" @ref="demoForm" Style="margin-top:10px" Value="value">
-        <BFormItem TValue="string" Label="股票代码" Name="@nameof(KDemoFormModel.Code)" IsRequired="true">
+        <BFormItem TValue="string" Label="指数代码" Name="@nameof(KDemoFormModel.Code)" IsRequired="true">
             <BInput TValue="string" Style="width:100px"></BInput>
         </BFormItem>
         <BFormItem TValue="DateTime?" Label="起始日期" Name="@nameof(KDemoFormModel.StartTime)">
@@ -22,8 +22,8 @@
             <BDatePicker IsClearable="true" Style="width:150px"></BDatePicker>
         </BFormItem>
         <BFormItem TValue="object">
-            <BButton Type="@ButtonType.Primary" OnClick="e=>Submit()">查询</BButton>
-            <BButton OnClick="e=>Reset()">重置</BButton>
+            <BButton Type="@ButtonType.Primary" OnClick="e => Submit()">查询</BButton>
+            <BButton OnClick="e => Reset()">重置</BButton>
         </BFormItem>
     </BForm>
     <ECandlestick Option="@Option1" Class="chart-fill" AutoRender="false" @ref="k"></ECandlestick>
@@ -35,7 +35,7 @@
 
     private void ShowData(string code, DateTime? start, DateTime? end)
     {
-        if (code.StartsWith("6")) code = "sh." + code;
+        if (code.StartsWith("0")) code = "sh." + code;
         else code = "sz." + code;
         if (start == null && end == null)
         {
@@ -65,21 +65,20 @@
         var info=Newtonsoft.Json.JsonConvert.DeserializeObject<List<StockInfo>>(HttpClient.GetStringAsync($"http://{ip}:8124/api/info/{code}").Result).FirstOrDefault();
         if (info == null)
         {
-            Message.Show("未获取到股票信息，请确认代码是否正确。", MessageType.Error);
+            Message.Show("未获取到指数信息，请确认代码是否正确。", MessageType.Error);
             return;
         }
-        if (info.Type != 1)
+        if (info.Type != 2)
         {
-            Message.Show($"该代码所代表的【{info.Name}】不是股票。", MessageType.Error);
+            Message.Show($"该代码所代表的【{info.Name}】不是指数。", MessageType.Error);
             return;
         }
         _=k.ShowLoadingAsync();
-        var result = HttpClient.GetStringAsync($"http://{ip}:8124/api/kdata/{code}/{start.Value.ToString("yyyy-MM-dd")}/{end.Value.ToString("yyyy-MM-dd")}").Result;
+        var result = HttpClient.GetStringAsync($"http://{ip}:8124/api/kindex/{code}/{start.Value.ToString("yyyy-MM-dd")}/{end.Value.ToString("yyyy-MM-dd")}").Result;
         var stock = Newtonsoft.Json.JsonConvert.DeserializeObject<List<StockData>>(result);
         var category = stock.Select(item => item.Date);
         var values = stock.Select(item => new[] { item.Open, item.Close, item.Low, item.High, item.Amount });
         var values1 = values.ToList();
-        var liTTM=stock.Select(item => item.PeTTM);
         var volumes = stock.Select((item, index) => new[] { index, item.Amount, item.Close >= item.Open ? 1 : -1 });
         string upColor = "#ec0000", downColor = "#00da3c";
 
@@ -91,54 +90,17 @@
             Legend = new Legend()
             {
                 Left = "center",
-                Data = new[] { "股价信息", "MA5", "MA10", "MA20", "MA30" }
+                Data = new[] { "指数信息", "MA5", "MA10", "MA20", "MA30" }
             },
             Tooltip = new Tooltip()
             {
                 Trigger = TooltipTrigger.Axis,
-                AxisPointer = new TooltipAxisPointer() { Type = AxisPointerType.Cross },
-                BackgroundColor = "rgba(245, 245, 245, 0.8)",
-                BorderWidth = 1,
-                BorderColor = "#ccc",
-                Padding = 10,
-                TextStyle = new TextStyle() { Color = "#000" },
-                Position = "function (pos, params, el, elRect, size) {var obj = {top: 10};obj[['left', 'right'][+(pos[0] < size.viewSize[0] / 2)]] = 30;return obj;}".ToJRaw()
-            },
-            AxisPointer = new AxisPointer()
-            {
-                Link = new AxisPointerLink() { XAxisIndex = "all" },
-                Label = new AxisPointerLabel() { BackgroundColor = "#777" }
-            },
-            Toolbox = new Toolbox()
-            {
-                Feature = new Feature()
-                {
-                    DataZoom = new FeatureDataZoom() { YAxisIndex = false },
-                    Brush = new FeatureBrush() { Type = new List<BrushType>() { BrushType.LineX, BrushType.Clear } }
-                }
-            },
-            Brush = new Brush()
-            {
-                XAxisIndex = "all",
-                BrushLink = "all",
-                OutOfBrush = new { colorAlpha = 0.1 }
-            },
-            VisualMap = new VisualMapPiecewise()
-            {
-                Show = false,
-                SeriesIndex = 5,
-                Dimension = 2,
-                Pieces = new List<object>()
-    {
-                    new {value=1,color= upColor},
-                    new {value=-1,color=downColor }
-                }
+                AxisPointer = new TooltipAxisPointer() { Type = AxisPointerType.Cross }
             },
             Grid = new List<Grid>()
 {
-                new Grid(){Left="10%",Right="8%",Height="50%" },
-                new Grid(){Left="10%",Right="8%",Top="60%",Height="20%" },
-                new Grid(){Left="10%",Right="8%",Top="80%",Height="15%" }
+                new Grid(){Left="10%",Right="8%",Height="70%" },
+                new Grid(){Left="10%",Right="8%",Top="78%",Height="16%" }
             },
             XAxis = new List<XAxis>()
 {
@@ -152,28 +114,12 @@
                     SplitLine=new SplitLine(){ Show=false},
                     SplitNumber=20,
                     Min="dataMin",
-                    Max="dataMax",
-                    AxisPointer=new AxisPointer(){Z=100 }
-                },
-                new XAxis()
-                {
-                    Type=AxisType.Category,
-                    GridIndex=1,
-                    Data=category,
-                    Scale=true,
-                    BoundaryGap=false,
-                    AxisLine=new AxisLine(){ OnZero=false},
-                    AxisTick=new AxisTick(){Show=false },
-                    SplitLine=new SplitLine(){ Show=false},
-                    AxisLabel=new AxisLabel(){ Show=false},
-                    SplitNumber=20,
-                    Min="dataMin",
                     Max="dataMax"
                 },
                 new XAxis()
                 {
                     Type=AxisType.Category,
-                    GridIndex=2,
+                    GridIndex=1,
                     Data=category,
                     Scale=true,
                     BoundaryGap=false,
@@ -202,30 +148,20 @@
                     AxisLine=new AxisLine(){ Show=false},
                     AxisTick=new AxisTick(){ Show=false},
                     SplitLine=new SplitLine(){ Show=false},
-                },
-                new YAxis()
-                {
-                    Scale=true,
-                    GridIndex=2,
-                    SplitNumber=2,
-                    AxisLabel=new AxisLabel(){ Show=false},
-                    AxisLine=new AxisLine(){ Show=false},
-                    AxisTick=new AxisTick(){ Show=false},
-                    SplitLine=new SplitLine(){ Show=false},
                 }
             },
             DataZoom = new List<object>()
 {
                 new DataZoomInside()
                 {
-                    XAxisIndex=new []{0,1,2 },
+                    XAxisIndex=new []{0,1 },
                     Start=70,
                     End=100
                 },
                 new DataZoomSlider()
                 {
                     Show=true,
-                    XAxisIndex=new []{0,1,2 },
+                    XAxisIndex=new []{0,1 },
                     Top="95%",
                     Start=70,
                     End=100
@@ -235,13 +171,76 @@
     {
                 new Candlestick()
                 {
-                    Name="股价信息",
+                    Name="指数信息",
                     Data=values,
                     ItemStyle=new ItemStyle(){Color=upColor,Color0=downColor,BorderColor="null".ToJRaw(),BorderColor0="null".ToJRaw() },
-                    //Tooltip=new Tooltip()
-                    //{
-                    //    Formatter="function (param) {param = param[0];return ['Date: ' + param.name + '<hr size=1 style=\"margin: 3px 0\">','开盘价: ' + param.data[0] + '<br/>','收盘价: ' + param.data[1] + '<br/>','最低价: ' + param.data[2] + '<br/>','最高价: ' + param.data[3] + '<br/>'].join('');}".ToJRaw()
-                    //}
+                    MarkPoint=new MarkPoint()
+                    {
+                        Label=new Label(){Formatter="function (param) {return param != null ? Math.round(param.value) : '';}".ToJRaw() },
+                        Data=new List<MarkPointData>()
+                        {
+                            new MarkPointData()
+                            {
+                                Name="最高点",
+                                Type=MarkPointDataType.Max,
+                                ValueDim="highest"
+                            },
+                            new MarkPointData()
+                            {
+                                Name="最低点",
+                                Type=MarkPointDataType.Min,
+                                ValueDim="lowest"
+                            },
+                            new MarkPointData()
+                            {
+                                Name="平均值",
+                                Type=MarkPointDataType.Average,
+                                ValueDim="close"
+                            }
+                        },
+                        Tooltip=new Tooltip(){Formatter="function (param) {return param.name + '<br>' + (param.data.coord || '');}".ToJRaw() }
+                    },
+                    MarkLine=new MarkLine()
+                    {
+                        Symbol=new []{ "none","none"},
+                        Data=new List<object>()
+                        {
+                            new List<MarkLineData>()
+                            {
+                                new MarkLineData()
+                                {
+                                    Name="高低点连线",
+                                    Type=Sampling.Min,
+                                    ValueDim="lowest",
+                                    Symbol="circle",
+                                    SymbolSize=10,
+                                    Label=new MarkLineDataLabel(){Show=false },
+                                    Emphasis=new Emphasis(){ Show=false}
+                                },
+                                new MarkLineData()
+                                {
+                                    Type=Sampling.Max,
+                                    ValueDim="highest",
+                                    Symbol="circle",
+                                    SymbolSize=10,
+                                    Label=new MarkLineDataLabel(){Show=false },
+                                    Emphasis=new Emphasis(){ Show=false}
+                                }
+                            },
+                            new MarkLineData()
+                            {
+                                Name="最小值",
+                                Type=Sampling.Min,
+                                ValueDim="close"
+                            },
+                            new MarkLineData()
+                            {
+                                Name="最大值",
+                                Type=Sampling.Max,
+                                ValueDim="close"
+                            }
+                        }
+                    }
                 },
                 new Line()
                 {
@@ -277,26 +276,11 @@
                     XAxisIndex=1,
                     YAxisIndex=1,
                     Data=volumes
-                },
-                new Line()
-                {
-                    Name="滚动市盈率",
-                    Data=liTTM,
-                    XAxisIndex=2,
-                    YAxisIndex=2,
-                    Smooth=true,
-                    LineStyle=new LineStyle(){Opacity=0.5,Color="blue" }
                 }
             }
         };
 
         _ = k.SetupOptionAsync(Option1, true);
-        DateTime t = end.Value.AddMonths(-1);
-        while (t.DayOfWeek == DayOfWeek.Sunday || t.DayOfWeek == DayOfWeek.Saturday)
-        {
-            t=t.AddDays(1);
-        }
-        _ = k.ExecFuncAsync($"dispatchAction({{type: 'brush',areas: [{{brushType: 'lineX',coordRange: ['{t.ToString("yyyy-MM-dd")}', '{end.Value.ToString("yyyy-MM-dd")}'],xAxisIndex: 0}}]}});");
     }
 
     protected override void OnAfterRender(bool firstRender)
@@ -334,7 +318,7 @@
         base.OnParametersSet();
         value = new KDemoFormModel()
         {
-            Code = "002024",
+            Code = "000001",
             StartTime = yesterday.AddYears(-1),
             EndTime = yesterday
         };
