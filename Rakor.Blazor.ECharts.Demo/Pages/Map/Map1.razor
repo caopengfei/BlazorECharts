@@ -3,8 +3,7 @@
 @using Rakor.Blazor.ECharts.Option.Enum
 @using Rakor.Blazor.ECharts.Option.Series.Map
 @using Rakor.Blazor.ECharts.Option.Series
-
-@inject HttpClient HttpClient
+@using System.IO
 
 <div class="container">
     <EMap Option="@Option1" Class="chart-fill" AutoRender="false" @ref="map"></EMap>
@@ -16,8 +15,9 @@
 
     protected override void OnAfterRender(bool firstRender)
     {
-        string json=HttpClient.GetStringAsync("/json/hk.json").Result;
-        _ = map.ExecFuncAsync($"echarts.registerMap('HK', {json});",false);
+        _ = map.InitChartAsync();
+        string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/json/hk.json"));
+        _ = map.ExecFuncAsync($"echarts.registerMap('HK', {json});", false);
         Option1 = new EChartsOption<Map>()
         {
             Title = new Title() { Text = "香港18区人口密度（2011）" },
@@ -49,14 +49,14 @@
                 InRange = new { color = new[] { "lightskyblue", "yellow", "orangered" } }
             },
             Series = new List<object>()
-            {
+        {
                 new Map()
                 {
                     Name="香港18区人口密度",
                     MapType="HK",
                     Label=new Label(){ Show=true},
                     Data=new List<object>()
-                    {
+                {
                         new {name= "中西区", value= 20057.34},
                         new {name= "湾仔", value= 15477.48},
                         new {name= "东区", value= 31686.1},
@@ -80,6 +80,6 @@
             }
         };
 
-        _=map.SetupOptionAsync(Option1);
+        _ = map.SetupOptionAsync(Option1);
     }
 }

@@ -80,6 +80,10 @@ namespace Rakor.Blazor.ECharts
         {
             await JSRuntime.HideLoadingChart(Id);
         }
+        public async Task InitChartAsync()
+        {
+            await JSRuntime.InitChart(Id);
+        }
         public async Task SetupOptionAsync(EChartsOption<T> opt, bool notMerge = false)  
         {
             await JSRuntime.SetupChart(Id, opt, notMerge);

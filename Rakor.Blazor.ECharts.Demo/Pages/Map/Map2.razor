@@ -3,8 +3,7 @@
 @using Rakor.Blazor.ECharts.Option.Enum
 @using Rakor.Blazor.ECharts.Option.Series.Map
 @using Rakor.Blazor.ECharts.Option.Series
-
-@inject HttpClient HttpClient
+@using System.IO
 
 <div class="container">
     <EMap Option="@Option1" Class="chart-fill" AutoRender="false" @ref="map"></EMap>
@@ -16,12 +15,13 @@
 
     protected override void OnAfterRender(bool firstRender)
     {
+        _ = map.InitChartAsync();
         //https://geo.datav.aliyun.com/areas/bound/100000_full.json
-        string json = HttpClient.GetStringAsync("/json/china.json").Result;
+        string json = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/json/china.json"));
         _ = map.ExecFuncAsync($"echarts.registerMap('China', {json});", false);
         Option1 = new EChartsOption<Map>()
         {
-            Title = new Title() { Text = "中国人口分布图",Subtext="数据仅做参考" },
+            Title = new Title() { Text = "中国人口分布图", Subtext = "数据仅做参考" },
             Tooltip = new Tooltip()
             {
                 Trigger = TooltipTrigger.Item,
@@ -50,7 +50,7 @@
                 InRange = new { color = new[] { "lightskyblue", "yellow", "orangered" } }
             },
             Series = new List<object>()
-            {
+        {
                 new Map()
                 {
                     Name="中国人口分布图",
@@ -61,7 +61,7 @@
                     LayoutCenter=new []{ "50%","70%"},
                     LayoutSize="100%",
                     Data=new List<object>()
-                    {
+                {
                         new {name= "广东省", value= 11346},
                         new {name= "山东省", value= 10047.24 },
                         new {name= "河南省", value= 9605},
