@@ -291,6 +291,10 @@
         };
 
         _ = k.SetupOptionAsync(Option1, true);
+        while (end.Value.DayOfWeek == DayOfWeek.Sunday || end.Value.DayOfWeek == DayOfWeek.Saturday)
+        {
+            end=end.Value.AddDays(-1);
+        }
         DateTime t = end.Value.AddMonths(-1);
         while (t.DayOfWeek == DayOfWeek.Sunday || t.DayOfWeek == DayOfWeek.Saturday)
         {
