@@ -80,13 +80,17 @@ namespace Rakor.Blazor.ECharts
         {
             await JSRuntime.HideLoadingChart(Id);
         }
-        public async Task SetupOptionAsync(EChartsOption<object> opt, bool notMerge = false)  
+        public async Task SetupOptionAsync(EChartsOption<T> opt, bool notMerge = false)  
         {
             await JSRuntime.SetupChart(Id, opt, notMerge);
         }
-        public async Task ExecFuncAsync(string func) 
+        public async Task ExecFuncAsync(string func, bool prefix = true) 
         {
-            await JSRuntime.ExecFuncAsync(Id,func);
+            await JSRuntime.ExecFuncAsync(Id,func, prefix);
+        }
+        public async Task RegisterMapAsync(string url, string name = "map", object _callback = null)
+        {
+            await JSRuntime.RegisterMapAsync(Id, url, name, _callback);
         }
 
         public void Refresh()

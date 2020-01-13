@@ -1,0 +1,106 @@
+﻿@page "/map/map2"
+@using Rakor.Blazor.ECharts.Option
+@using Rakor.Blazor.ECharts.Option.Enum
+@using Rakor.Blazor.ECharts.Option.Series.Map
+@using Rakor.Blazor.ECharts.Option.Series
+
+@inject HttpClient HttpClient
+
+<div class="container">
+    <EMap Option="@Option1" Class="chart-fill" AutoRender="false" @ref="map"></EMap>
+</div>
+
+@code{
+    private EChartsOption<Map> Option1;
+    private EMap map;
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        //https://geo.datav.aliyun.com/areas/bound/100000_full.json
+        string json = HttpClient.GetStringAsync("/json/china.json").Result;
+        _ = map.ExecFuncAsync($"echarts.registerMap('China', {json});", false);
+        Option1 = new EChartsOption<Map>()
+        {
+            Title = new Title() { Text = "中国人口分布图",Subtext="数据仅做参考" },
+            Tooltip = new Tooltip()
+            {
+                Trigger = TooltipTrigger.Item,
+                Formatter = "{b}<br/>{c} 万人"
+            },
+            Toolbox = new Toolbox()
+            {
+                Show = true,
+                Orient = Orient.Vertical,
+                Top = "center",
+                Left = "right",
+                Feature = new Feature()
+                {
+                    DataView = new DataView() { ReadOnly = false },
+                    Restore = new Restore(),
+                    SaveAsImage = new SaveAsImage()
+                }
+            },
+            VisualMap = new VisualMapPiecewise()
+            {
+                Max = 11000,
+                Min = 50,
+                Text = new string[] { "High", "Low" },
+                Realtime = false,
+                Calculable = true,
+                InRange = new { color = new[] { "lightskyblue", "yellow", "orangered" } }
+            },
+            Series = new List<object>()
+            {
+                new Map()
+                {
+                    Name="中国人口分布图",
+                    MapType="China",
+                    Label=new Label(){ Show=true},
+                    Roam=true,
+                    Zoom=1.4,
+                    LayoutCenter=new []{ "50%","70%"},
+                    LayoutSize="100%",
+                    Data=new List<object>()
+                    {
+                        new {name= "广东省", value= 11346},
+                        new {name= "山东省", value= 10047.24 },
+                        new {name= "河南省", value= 9605},
+                        new {name= "四川省", value= 8341},
+                        new {name= "江苏省", value= 8050.7},
+                        new {name= "河北省", value= 7556.30},
+                        new {name= "湖南省", value= 6898.8},
+                        new {name= "安徽省", value= 6323.6},
+                        new {name= "湖北省", value= 5917},
+                        new {name= "浙江省", value= 5737},
+                        new {name= "广西壮族自治区", value= 4926},
+                        new {name= "云南省", value= 4800.5},
+                        new {name= "江西省", value= 4647.6},
+                        new {name= "辽宁省", value= 4359.3},
+                        new {name= "福建省", value= 3941},
+                        new {name= "陕西省", value= 3864.4},
+                        new {name= "黑龙江省", value= 3773.1},
+                        new {name= "山西省", value= 3718.34},
+                        new {name= "贵州省", value= 3600},
+                        new {name= "重庆市", value= 3101.79},
+                        new {name= "吉林省", value= 2704.06},
+                        new {name= "甘肃省", value= 2637.26},
+                        new {name= "内蒙古自治区", value= 2534.0},
+                        new {name= "新疆维吾尔自治区", value= 2486.76},
+                        new {name= "上海市", value= 2423.78},
+                        new {name= "台湾省", value= 2369},
+                        new {name= "北京市", value= 2154.2},
+                        new {name= "天津市", value= 1559.60},
+                        new {name= "海南省", value= 934.32},
+                        new {name= "香港特别行政区", value= 748.25},
+                        new {name= "宁夏回族自治区", value= 688.11},
+                        new {name= "青海省", value= 603.23},
+                        new {name= "西藏自治区", value= 337.15},
+                        new {name= "澳门特别行政区", value= 63.2}
+                    }
+                }
+            }
+        };
+
+        _ = map.SetupOptionAsync(Option1);
+    }
+}

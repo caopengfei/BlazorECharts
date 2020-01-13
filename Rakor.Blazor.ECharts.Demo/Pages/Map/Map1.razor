@@ -1,0 +1,85 @@
+﻿@page "/map/map1"
+@using Rakor.Blazor.ECharts.Option
+@using Rakor.Blazor.ECharts.Option.Enum
+@using Rakor.Blazor.ECharts.Option.Series.Map
+@using Rakor.Blazor.ECharts.Option.Series
+
+@inject HttpClient HttpClient
+
+<div class="container">
+    <EMap Option="@Option1" Class="chart-fill" AutoRender="false" @ref="map"></EMap>
+</div>
+
+@code{
+    private EChartsOption<Map> Option1;
+    private EMap map;
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        string json=HttpClient.GetStringAsync("/json/hk.json").Result;
+        _ = map.ExecFuncAsync($"echarts.registerMap('HK', {json});",false);
+        Option1 = new EChartsOption<Map>()
+        {
+            Title = new Title() { Text = "香港18区人口密度（2011）" },
+            Tooltip = new Tooltip()
+            {
+                Trigger = TooltipTrigger.Item,
+                Formatter = "{b}<br/>{c} (p / km2)"
+            },
+            Toolbox = new Toolbox()
+            {
+                Show = true,
+                Orient = Orient.Vertical,
+                Top = "center",
+                Left = "right",
+                Feature = new Feature()
+                {
+                    DataView = new DataView() { ReadOnly = false },
+                    Restore = new Restore(),
+                    SaveAsImage = new SaveAsImage()
+                }
+            },
+            VisualMap = new VisualMapPiecewise()
+            {
+                Max = 50000,
+                Min = 800,
+                Text = new string[] { "High", "Low" },
+                Realtime = false,
+                Calculable = true,
+                InRange = new { color = new[] { "lightskyblue", "yellow", "orangered" } }
+            },
+            Series = new List<object>()
+            {
+                new Map()
+                {
+                    Name="香港18区人口密度",
+                    MapType="HK",
+                    Label=new Label(){ Show=true},
+                    Data=new List<object>()
+                    {
+                        new {name= "中西区", value= 20057.34},
+                        new {name= "湾仔", value= 15477.48},
+                        new {name= "东区", value= 31686.1},
+                        new {name= "南区", value= 6992.6},
+                        new {name= "油尖旺", value= 44045.49},
+                        new {name= "深水埗", value= 40689.64},
+                        new {name= "九龙城", value= 37659.78},
+                        new {name= "黄大仙", value= 45180.97},
+                        new {name= "观塘", value= 55204.26},
+                        new {name= "葵青", value= 21900.9},
+                        new {name= "荃湾", value= 4918.26},
+                        new {name= "屯门", value= 5881.84},
+                        new {name= "元朗", value= 4178.01},
+                        new {name= "北区", value= 2227.92},
+                        new {name= "大埔", value= 2180.98},
+                        new {name= "沙田", value= 9172.94},
+                        new {name= "西贡", value= 3368},
+                        new {name= "离岛", value= 806.98}
+                    }
+                }
+            }
+        };
+
+        _=map.SetupOptionAsync(Option1);
+    }
+}

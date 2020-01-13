@@ -20,6 +20,17 @@ namespace Rakor.Blazor.ECharts.Option
         /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#toolbox.left">此处</see>查看详细设置</para>
         /// </summary>
         public object Left { set; get; }
+
+        /// <summary>
+        /// 工具栏组件离容器顶部的距离。
+        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#toolbox.top">此处</see>查看详细设置</para>
+        /// </summary>
+        public object Top { set; get; }
+
+        /// <summary>
+        /// 工具栏 icon 的布局朝向。
+        /// </summary>
+        public Orient Orient { set; get; }
     }
 
     /// <summary>
