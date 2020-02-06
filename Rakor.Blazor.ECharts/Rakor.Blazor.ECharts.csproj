@@ -15,6 +15,11 @@
 使用方式见Demo项目</Description>
     <AssemblyName>Rakor.Blazor.ECharts</AssemblyName>
     <RootNamespace>Rakor.Blazor.ECharts</RootNamespace>
+    <PackageProjectUrl>https://github.com/lishewen/BlazorECharts</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/lishewen/BlazorECharts</RepositoryUrl>
+    <RepositoryType>github</RepositoryType>
+    <projectUrl>https://github.com/lishewen/BlazorECharts</projectUrl>
+    <PackageTags>Blazor,.net core,ECharts</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
