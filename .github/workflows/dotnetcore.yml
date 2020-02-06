@@ -1,0 +1,37 @@
+name: .NET Core
+
+on: [push]
+
+env:
+  NUGET_UPLOAD_URL: https://nuget.pkg.github.com/lishewen/
+  NUGET_SOURCE_URL: https://nuget.pkg.github.com/lishewen/index.json
+  NUGET_USER_NAME: lishewen
+  NUGET_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+  NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.2
+      with:
+       nuget-version: latest
+    - name: Build with dotnet
+      run: dotnet build --configuration Release
+    - name: Add private GitHub registry to NuGet
+      run: |
+        nuget sources add -name github -Source https://nuget.pkg.github.com/lishewen/index.json -Username lishewen -Password ${{ secrets.GITHUB_TOKEN }}
+    - name: Set Apikey
+      run: |
+        nuget setapikey ${{ secrets.GITHUB_TOKEN }} -Source https://nuget.pkg.github.com/lishewen/index.json
+    - name: Push generated package to GitHub registry
+      run: |
+        nuget push ./Rakor.Blazor.ECharts/bin/Release/*.nupkg -Source github -SkipDuplicate
