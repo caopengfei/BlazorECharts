@@ -1,11 +1,11 @@
 ﻿/// <reference path="jquery-3.4.1.js" />
 
 window.echartsFunctions = {
-    liChart : new Array(),
+    liChart: new Array(),
     getChart: function (id) {
         for (var i = 0; i < echartsFunctions.liChart.length; i++) {
             if (echartsFunctions.liChart[i].Id === id) {
-                return echartsFunctions.liChart[i].Chart; 
+                return echartsFunctions.liChart[i].Chart;
             }
         }
         return null;
@@ -25,11 +25,11 @@ window.echartsFunctions = {
             echartsFunctions.liChart.splice(index, 1);
         }
     },
-    initChart: function (id) {
+    initChart: function (id, theme = 'light') {
         var chart = echartsFunctions.getChart(id);
         if (chart === null) {
             //chart = echarts.init(document.getElementById(id), null, { renderer: 'svg' });
-            chart = echarts.init(document.getElementById(id));
+            chart = echarts.init(document.getElementById(id), theme);
             chart.showLoading();
             echartsFunctions.addChart(id, chart);
         }
@@ -55,7 +55,7 @@ window.echartsFunctions = {
         console.log(opt);
         var chart = echartsFunctions.getChart(id);
         if (chart === null) {
-            chart=echartsFunctions.initChart(id);
+            chart = echartsFunctions.initChart(id);
         }
         chart.hideLoading();
         chart.setOption(opt, notMerge);
@@ -64,7 +64,7 @@ window.echartsFunctions = {
     execFunc: function (id, func, prefix) {
         var chart = echartsFunctions.getChart(id);
         if (chart === null) {
-            chart=echartsFunctions.initChart(id);
+            chart = echartsFunctions.initChart(id);
         }
         if (prefix)
             eval('chart.' + func);
@@ -72,10 +72,10 @@ window.echartsFunctions = {
             eval(func);
         console.log('已执行：' + func);
     },
-    execInvokeMethod: function (className,methodName) {
-        return DotNet.invokeMethodAsync(className,methodName);
+    execInvokeMethod: function (className, methodName) {
+        return DotNet.invokeMethodAsync(className, methodName);
     },
-    registerMap: function (id,name, url,_callback) {
+    registerMap: function (id, name, url, _callback) {
         //var chart = echartsFunctions.getChart(id);
         //if (chart === null) {
         //    chart = echartsFunctions.initChart(id);
@@ -88,7 +88,7 @@ window.echartsFunctions = {
                     eval(_callback);
             })
             .fail(function (jqxhr, textStatus, error) {
-                console.log("获取json数据（" + url+"）失败: " + textStatus + "（" + error+"）");
+                console.log("获取json数据（" + url + "）失败: " + textStatus + "（" + error + "）");
             });
     }
 };
