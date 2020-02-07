@@ -31,6 +31,8 @@
         /// </summary>
         public int? YAxisIndex { set; get; }
 
+        public string BarWidth { get; set; }
+
         public object Data { set; get; }
     }
 }
