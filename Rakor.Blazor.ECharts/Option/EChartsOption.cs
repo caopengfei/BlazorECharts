@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Rakor.Blazor.ECharts.Option
 {
@@ -39,6 +40,7 @@ namespace Rakor.Blazor.ECharts.Option
         /// </summary>
         public Toolbox Toolbox { set; get; }
 
+        [JsonProperty("dataset")]
         public DataSet DataSet { get; set; }
 
         /// <summary>
