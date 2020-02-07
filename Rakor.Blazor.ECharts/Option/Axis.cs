@@ -113,7 +113,8 @@ namespace Rakor.Blazor.ECharts.Option
         public PositionY? Position { set; get; }
     }
     public class AxisTick
-    { 
+    {
+        public bool? AlignWithLabel { set; get; }
         public bool? Show { set; get; }
     }
     public class AxisLabel
