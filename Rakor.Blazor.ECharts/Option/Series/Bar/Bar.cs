@@ -34,5 +34,7 @@
         public string BarWidth { get; set; }
 
         public object Data { set; get; }
+
+        public Encode Encode { get; set; }
     }
 }
