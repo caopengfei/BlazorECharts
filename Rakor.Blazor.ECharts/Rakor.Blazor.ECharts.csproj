@@ -5,7 +5,7 @@
     <ApplicationIcon />
     <OutputType>Library</OutputType>
     <StartupObject />
-    <Version>0.4.0</Version>
+    <Version>0.4.1</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>rakor</Authors>
     <IsPackable>true</IsPackable>
