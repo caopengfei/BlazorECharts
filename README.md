@@ -8,7 +8,7 @@
 
 开源地址：[https://github.com/caopengfei/BlazorECharts](https://github.com/caopengfei/BlazorECharts)
 
-示例地址：[http://101.132.118.176:8123/line/line1](http://101.132.118.176:8123/line/line1)
+示例地址：[http://101.132.107.140:8123/line/line1](http://101.132.107.140:8123/line/line1)
 
 ECharts配置请参考：
 
@@ -75,7 +75,7 @@ ECharts配置请参考：
   - [x] 柱状图（部分）
   - [x] 饼图（部分）
   - [ ] 散点图
-  - [ ] 地理坐标/地图
+  - [x] 地理坐标/地图（部分）
   - [x] K线图（部分）
   - [ ] 雷达图
   - [ ] 盒须图
