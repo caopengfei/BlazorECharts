@@ -25,11 +25,11 @@ window.echartsFunctions = {
             echartsFunctions.liChart.splice(index, 1);
         }
     },
-    initChart: function (id) {
+    initChart: function (id, theme = 'light') {
         var chart = echartsFunctions.getChart(id);
         if (chart === null) {
             //chart = echarts.init(document.getElementById(id), null, { renderer: 'svg' });
-            chart = echarts.init(document.getElementById(id));
+            chart = echarts.init(document.getElementById(id), theme);
             chart.showLoading();
             echartsFunctions.addChart(id, chart);
         }

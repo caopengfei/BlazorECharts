@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Rakor.Blazor.ECharts.Option
 {
@@ -38,6 +39,9 @@ namespace Rakor.Blazor.ECharts.Option
         /// 工具栏。内置有导出图片，数据视图，动态类型切换，数据区域缩放，重置五个工具。
         /// </summary>
         public Toolbox Toolbox { set; get; }
+
+        [JsonProperty("dataset")]
+        public DataSet DataSet { get; set; }
 
         /// <summary>
         /// 直角坐标系内绘图网格，单个 grid 内最多可以放置上下两个 X 轴，左右两个 Y 轴。可以在网格上绘制折线图，柱状图，散点图（气泡图）。

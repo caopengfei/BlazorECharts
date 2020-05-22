@@ -5,8 +5,8 @@
     <ApplicationIcon />
     <OutputType>Library</OutputType>
     <StartupObject />
-    <Version>0.3.0</Version>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Version>0.4.3</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>rakor</Authors>
     <IsPackable>true</IsPackable>
     <Description>Blazor版本的ECharts图表组件
@@ -15,23 +15,19 @@
 使用方式见Demo项目</Description>
     <AssemblyName>Rakor.Blazor.ECharts</AssemblyName>
     <RootNamespace>Rakor.Blazor.ECharts</RootNamespace>
+    <PackageProjectUrl>https://github.com/lishewen/BlazorECharts</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/lishewen/BlazorECharts</RepositoryUrl>
+    <RepositoryType>github</RepositoryType>
+    <projectUrl>https://github.com/lishewen/BlazorECharts</projectUrl>
+    <PackageTags>Blazor,.net core,ECharts</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Update="wwwroot\js\core.js">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Update="wwwroot\js\echarts-4.5.js">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Update="wwwroot\js\echarts-4.5.min.js">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Update="wwwroot\js\jquery-3.4.1.min.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

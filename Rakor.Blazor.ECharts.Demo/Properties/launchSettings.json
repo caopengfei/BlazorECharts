@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:88",
+      "applicationUrl": "http://localhost:9527",
       "sslPort": 0
     }
   },
@@ -19,10 +19,10 @@
     "Blazor.ECharts.Demo": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "http://localhost:88",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "applicationUrl": "http://localhost:88"
     }
   }
 }

@@ -44,11 +44,15 @@
     [Inject]
     NavigationManager NavigationManager { get; set; }
 
-    protected override void OnInitialized()
+    protected override void OnAfterRender(bool firstRender)
     {
-        if (new Uri(NavigationManager.Uri).LocalPath == "/")
+        if (firstRender)
         {
-            NavigationManager.NavigateTo("/line/line1");
+            if (new Uri(NavigationManager.Uri).LocalPath == "/")
+            {
+                NavigationManager.NavigateTo("/line/line1");
+            }
         }
+        base.OnAfterRender(firstRender);
     }
 }
