@@ -76,14 +76,10 @@ window.echartsFunctions = {
         return DotNet.invokeMethodAsync(className, methodName);
     },
     registerMap: function (id, name, url, _callback) {
-        //var chart = echartsFunctions.getChart(id);
-        //if (chart === null) {
-        //    chart = echartsFunctions.initChart(id);
-        //}
-        //chart.hideLoading();
         $.getJSON(url)
             .done(function (data) {
                 echarts.registerMap(name, data);
+                console.log('已执行：registerMap');
                 if (_callback !== null)
                     eval(_callback);
             })
