@@ -71,7 +71,7 @@
             "name": "搜索列表（应用）",
             "key": "list.search.applications"
           }
-        ] 
+        ]
       },
       {
         "path": "/list/table-list",
@@ -123,29 +123,6 @@
         "path": "/result/fail",
         "name": "失败页",
         "key": "result.fail"
-      }
-    ]
-  },
-  {
-    "path": "/exception",
-    "name": "异常页",
-    "key": "exception",
-    "icon": "exception",
-    "children": [
-      {
-        "path": "/exception/403",
-        "name": "403",
-        "key": "exception.403"
-      },
-      {
-        "path": "/exception/404",
-        "name": "404",
-        "key": "exception.404"
-      },
-      {
-        "path": "/exception/500",
-        "name": "500",
-        "key": "exception.500"
       }
     ]
   },
@@ -204,6 +181,24 @@
         "path": "/line/line10",
         "name": "极坐标双数值轴2",
         "key": "line.line10"
+      }
+    ]
+  },
+  {
+    "path": "/bar",
+    "name": "柱状图",
+    "key": "bar",
+    "icon": "folder",
+    "children": [
+      {
+        "path": "/bar/bar1",
+        "name": "高度(km)与气温(°C)变化关系",
+        "key": "bar.bar1"
+      },
+      {
+        "path": "/bar/bar2",
+        "name": "柱状图动画延迟",
+        "key": "bar.bar2"
       }
     ]
   }
