@@ -41,4 +41,8 @@
     <Watch Include="**\*.razor" />
     <Watch Include="**\*.less" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Rakor.Blazor.ECharts\Rakor.Blazor.ECharts.csproj" />
+  </ItemGroup>
 </Project>
