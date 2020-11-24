@@ -150,20 +150,60 @@
     ]
   },
   {
-    "path": "/account",
-    "name": "个人页",
-    "key": "account",
-    "icon": "user",
+    "path": "/line",
+    "name": "折线图",
+    "key": "line",
+    "icon": "folder",
     "children": [
       {
-        "path": "/account/center",
-        "name": "个人中心",
-        "key": "account.center"
+        "path": "/line/line1",
+        "name": "基础折线图",
+        "key": "line.line1"
       },
       {
-        "path": "/account/settings",
-        "name": "个人设置",
-        "key": "account.settings"
+        "path": "/line/line2",
+        "name": "堆叠区域图",
+        "key": "line.line2"
+      },
+      {
+        "path": "/line/line3",
+        "name": "堆叠折线图",
+        "key": "line.line3"
+      },
+      {
+        "path": "/line/line4",
+        "name": "雨量流量关系图1",
+        "key": "line.line4"
+      },
+      {
+        "path": "/line/line5",
+        "name": "大数据量面积图",
+        "key": "line.line5"
+      },
+      {
+        "path": "/line/line6",
+        "name": "雨量流量关系图2",
+        "key": "line.line6"
+      },
+      {
+        "path": "/line/line7",
+        "name": "北京 AQI",
+        "key": "line.line7"
+      },
+      {
+        "path": "/line/line8",
+        "name": "未来一周气温变化",
+        "key": "line.line8"
+      },
+      {
+        "path": "/line/line9",
+        "name": "极坐标双数值轴1",
+        "key": "line.line9"
+      },
+      {
+        "path": "/line/line10",
+        "name": "极坐标双数值轴2",
+        "key": "line.line10"
       }
     ]
   }

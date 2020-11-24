@@ -59,20 +59,6 @@
                             <DescriptionTemplate>@context.SubDescription</DescriptionTemplate>
                             <TitleTemplate><a>@context.Title</a></TitleTemplate>
                         </CardMeta>
-                        <div class="cardItemContent">
-                            <span>@context.UpdatedAt.ToFriendlyDisplay()</span>
-                            <div class="avatarList">
-                                <Demo.WASM.Pages.Account.Center.AvatarList>
-                                    @foreach (var member in context.Members)
-                                    {
-                                        <Demo.WASM.Pages.Account.Center.AvatarListItem
-                                            Size="small"
-                                            Src="@member.Avatar"
-                                            Tips="@member.Name"/>
-                                    }
-                                </Demo.WASM.Pages.Account.Center.AvatarList>
-                            </div>
-                        </div>
                     </ChildContent>
                 </Card>
             </ListItem>

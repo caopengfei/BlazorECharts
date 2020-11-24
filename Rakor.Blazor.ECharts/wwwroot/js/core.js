@@ -29,7 +29,7 @@ window.echartsFunctions = {
         var chart = echartsFunctions.getChart(id);
         if (chart === null) {
             //chart = echarts.init(document.getElementById(id), null, { renderer: 'svg' });
-            chart = echarts.init(document.getElementById(id), theme);
+            chart = echarts.init(document.getElementById(id), theme, { renderer: 'svg' });
             chart.showLoading();
             echartsFunctions.addChart(id, chart);
         }
