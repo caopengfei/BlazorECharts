@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rakor.Blazor.ECharts", "Rak
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo", "Rakor.Blazor.ECharts.Demo\Demo.csproj", "{F61C94BF-3940-4CEB-AFB7-FA70B2895CF0}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.WASM", "Demo.WASM\Demo.WASM.csproj", "{B657BB52-9EF1-42FE-8CBA-A2891A0DA1EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{F61C94BF-3940-4CEB-AFB7-FA70B2895CF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F61C94BF-3940-4CEB-AFB7-FA70B2895CF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F61C94BF-3940-4CEB-AFB7-FA70B2895CF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B657BB52-9EF1-42FE-8CBA-A2891A0DA1EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B657BB52-9EF1-42FE-8CBA-A2891A0DA1EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B657BB52-9EF1-42FE-8CBA-A2891A0DA1EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B657BB52-9EF1-42FE-8CBA-A2891A0DA1EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -36,6 +42,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{8BC32F32-9FC1-4575-AAEF-FC73A74520C6} = {034BBB6F-E387-403E-916C-5E5333AE4DBC}
 		{F61C94BF-3940-4CEB-AFB7-FA70B2895CF0} = {034BBB6F-E387-403E-916C-5E5333AE4DBC}
+		{B657BB52-9EF1-42FE-8CBA-A2891A0DA1EF} = {034BBB6F-E387-403E-916C-5E5333AE4DBC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {76912AC9-447E-471E-8E59-EF381DA212AC}
