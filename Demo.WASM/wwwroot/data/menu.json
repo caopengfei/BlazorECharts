@@ -109,24 +109,6 @@
     ]
   },
   {
-    "path": "/result",
-    "name": "结果页",
-    "key": "result",
-    "icon": "check-circle",
-    "children": [
-      {
-        "path": "/result/success",
-        "name": "成功页",
-        "key": "result.success"
-      },
-      {
-        "path": "/result/fail",
-        "name": "失败页",
-        "key": "result.fail"
-      }
-    ]
-  },
-  {
     "path": "/line",
     "name": "折线图",
     "key": "line",
@@ -199,6 +181,24 @@
         "path": "/bar/bar2",
         "name": "柱状图动画延迟",
         "key": "bar.bar2"
+      }
+    ]
+  },
+  {
+    "path": "/radar",
+    "name": "雷达图",
+    "key": "radar",
+    "icon": "folder",
+    "children": [
+      {
+        "path": "/radar/radar1",
+        "name": "基础雷达图",
+        "key": "radar.radar1"
+      },
+      {
+        "path": "/radar/radar2",
+        "name": "AQI - 雷达图",
+        "key": "radar.radar2"
       }
     ]
   }
