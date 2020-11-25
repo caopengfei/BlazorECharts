@@ -1,0 +1,46 @@
+﻿@page "/line/line10"
+@using Rakor.Blazor.ECharts.Option
+@using Rakor.Blazor.ECharts.Option.Enum
+@using Rakor.Blazor.ECharts.Option.Series.Line
+
+<div class="chart-container">
+    <ECLine Option="@Option1" Class="chart-fill"></ECLine>
+</div>
+
+@code{
+    private EChartsOption<Line> Option1;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        List<IEnumerable<double>> data = new List<IEnumerable<double>>();
+        double theta = 0;
+        for (int i = 0; i <= 360; i++)
+        {
+            theta = Math.Round(i / 180d * Math.PI, 4);
+            data.Add(new[] { Math.Round(Math.Sin(2*theta)*Math.Cos(2*theta), 4), i });
+        }
+
+        Option1 = new EChartsOption<Line>()
+        {
+            Title = new Rakor.Blazor.ECharts.Option.Title() { Text = "极坐标双数值轴" },
+            Tooltip = new Rakor.Blazor.ECharts.Option.Tooltip() { Trigger = TooltipTrigger.Axis, AxisPointer = new TooltipAxisPointer() { Type = AxisPointerType.Cross } },
+            Legend = new Rakor.Blazor.ECharts.Option.Legend() { Data = new[] { "line" } },
+            Polar = new Polar() { Center=new List<object>() {"50%","54%" } },
+            RadiusAxis = new RadiusAxis() { Min=0},
+            AngleAxis = new AngleAxis() { Type = AxisType.Value, StartAngle = 0 },
+            Series = new List<object>()
+            {
+                new Line()
+                {
+                    CoordinateSystem=CoordinateSystem.Polar,
+                    Name="line",
+                    ShowSymbol=false,
+                    Data=data
+                }
+            },
+            AnimationDuration=2000
+        };
+    }
+}
