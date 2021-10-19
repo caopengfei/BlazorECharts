@@ -1,0 +1,109 @@
+﻿@page "/line/line2"
+@using Rakor.Blazor.ECharts.Option
+@using Rakor.Blazor.ECharts.Option.Enum
+@using Rakor.Blazor.ECharts.Option.Series.Line
+
+<div class="chart-container">
+    <ECLine Option="@Option1" Class="chart-fill"></ECLine>
+</div>
+
+@code{
+    private EChartsOption<Line> Option1;
+
+    protected override void OnInitialized()
+    {
+        Option1 = new EChartsOption<Line>()
+        {
+            Title = new Rakor.Blazor.ECharts.Option.Title()
+            {
+                Text = "堆叠区域图"
+            },
+            YAxis = new List<YAxis>()
+{
+                new YAxis()
+                {
+                    Type = AxisType.Value
+                }
+            },
+            XAxis = new List<XAxis>()
+            {
+                new XAxis()
+                {
+                    Type = AxisType.Category,
+                    Data = new[] { "周一", "周二", "周三", "周四", "周五", "周六", "周日" },
+                    BoundaryGap = false
+                }
+            },
+            Series = new List<object>() {
+                new Line()
+                {
+                    Type = "line",
+                    Name="邮件营销",
+                    Stack="总量",
+                    AreaStyle=new AreaStyle(),
+                    Data = new[] { 120, 132, 101, 134, 90, 230, 210 },
+                },
+                new Line()
+                {
+                    Type = "line",
+                    Name="联盟广告",
+                    Stack="总量",
+                    AreaStyle=new AreaStyle(),
+                    Data = new[] { 220, 182, 191, 234, 290, 330, 310 },
+                },
+                new Line()
+                {
+                    Type = "line",
+                    Name="视频广告",
+                    Stack="总量",
+                    AreaStyle=new AreaStyle(),
+                    Data = new[] { 150, 232, 201, 154, 190, 330, 410 },
+                },
+                new Line()
+                {
+                    Type = "line",
+                    Name="直接访问",
+                    Stack="总量",
+                    AreaStyle=new AreaStyle(),
+                    Data = new[] { 320, 332, 301, 334, 390, 330, 320 },
+                },
+                new Line()
+                {
+                    Type = "line",
+                    Name="搜索引擎",
+                    Stack="总量",
+                    AreaStyle=new AreaStyle(),
+                    Data = new[] {820, 932, 901, 934, 1290, 1330, 1320 },
+                }
+            },
+            Tooltip = new Rakor.Blazor.ECharts.Option.Tooltip()
+            {
+                Trigger = TooltipTrigger.Axis,
+                AxisPointer = new TooltipAxisPointer()
+                {
+                    Type = AxisPointerType.Cross,
+                    Label = new AxisPointerLabel()
+                    {
+                        BackgroundColor = "#6a7985"
+                    }
+                }
+            },
+            Legend = new Rakor.Blazor.ECharts.Option.Legend()
+            {
+                Data = new[] { "邮件营销", "联盟广告", "视频广告", "直接访问", "搜索引擎" }
+            },
+            Toolbox = new Toolbox() { Feature = new Feature() { SaveAsImage = new SaveAsImage() } },
+            Grid = new List<Grid>()
+            {
+                new Grid()
+                {
+                    Left = "3%",
+                    Right = "4%",
+                    Bottom = "3%",
+                    ContainLabel = true
+                }
+            }
+        };
+        base.OnInitialized();
+    }
+}

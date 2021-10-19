@@ -8,7 +8,7 @@ namespace Rakor.Blazor.ECharts
 {
     public class ComponentBase<T> : ComponentBase
     {
-        protected string Id = "div" + DateTime.Now.Ticks;
+        protected string Id = "div" + Guid.NewGuid().ToString();
 
         [Parameter]
         public EChartsOption<T> Option { get; set; }

@@ -1,0 +1,205 @@
+[
+  {
+    "path": "/dashboard",
+    "name": "Dashboard",
+    "key": "dashboard",
+    "icon": "dashboard",
+    "children": [
+      {
+        "path": "/",
+        "name": "分析页",
+        "key": "dashboard.analysis"
+      },
+      {
+        "path": "/dashboard/monitor",
+        "name": "监控页",
+        "key": "dashboard.monitor"
+      },
+      {
+        "path": "/dashboard/workplace",
+        "name": "工作台",
+        "key": "dashboard.workplace"
+      }
+    ]
+  },
+  {
+    "path": "/form",
+    "name": "表单页",
+    "key": "form",
+    "icon": "form",
+    "children": [
+      {
+        "path": "/form/basic-form",
+        "name": "基础表单",
+        "key": "form.basic-form"
+      },
+      {
+        "path": "/form/step-form",
+        "name": "分布表单",
+        "key": "form.step-form"
+      },
+      {
+        "path": "/form/advanced-form",
+        "name": "高级表单",
+        "key": "form.advanced-form"
+      }
+    ]
+  },
+  {
+    "path": "/list",
+    "name": "列表页",
+    "key": "list",
+    "icon": "table",
+    "children": [
+      {
+        "path": "/list/search",
+        "name": "搜索列表",
+        "key": "list.search",
+        "children": [
+          {
+            "path": "/list/search/articles",
+            "name": "搜索列表（文章）",
+            "key": "list.search.articles"
+          },
+          {
+            "path": "/list/search/projects",
+            "name": "搜索列表（项目）",
+            "key": "list.search.projects"
+          },
+          {
+            "path": "/list/search/applications",
+            "name": "搜索列表（应用）",
+            "key": "list.search.applications"
+          }
+        ]
+      },
+      {
+        "path": "/list/table-list",
+        "name": "查询表格",
+        "key": "list.table-list"
+      },
+      {
+        "path": "/list/basic-list",
+        "name": "标准列表",
+        "key": "list.basic-list"
+      },
+      {
+        "path": "/list/card-list",
+        "name": "卡片列表",
+        "key": "list.card-list"
+      }
+    ]
+  },
+  {
+    "path": "/profile",
+    "name": "详情页",
+    "key": "profile",
+    "icon": "profile",
+    "children": [
+      {
+        "path": "/profile/basic",
+        "name": "基础详情页",
+        "key": "profile.basic"
+      },
+      {
+        "path": "/profile/advanced",
+        "name": "高级详情页",
+        "key": "profile.advanced"
+      }
+    ]
+  },
+  {
+    "path": "/line",
+    "name": "折线图",
+    "key": "line",
+    "icon": "folder",
+    "children": [
+      {
+        "path": "/line/line1",
+        "name": "基础折线图",
+        "key": "line.line1"
+      },
+      {
+        "path": "/line/line2",
+        "name": "堆叠区域图",
+        "key": "line.line2"
+      },
+      {
+        "path": "/line/line3",
+        "name": "堆叠折线图",
+        "key": "line.line3"
+      },
+      {
+        "path": "/line/line4",
+        "name": "雨量流量关系图1",
+        "key": "line.line4"
+      },
+      {
+        "path": "/line/line5",
+        "name": "大数据量面积图",
+        "key": "line.line5"
+      },
+      {
+        "path": "/line/line6",
+        "name": "雨量流量关系图2",
+        "key": "line.line6"
+      },
+      {
+        "path": "/line/line7",
+        "name": "北京 AQI",
+        "key": "line.line7"
+      },
+      {
+        "path": "/line/line8",
+        "name": "未来一周气温变化",
+        "key": "line.line8"
+      },
+      {
+        "path": "/line/line9",
+        "name": "极坐标双数值轴1",
+        "key": "line.line9"
+      },
+      {
+        "path": "/line/line10",
+        "name": "极坐标双数值轴2",
+        "key": "line.line10"
+      }
+    ]
+  },
+  {
+    "path": "/bar",
+    "name": "柱状图",
+    "key": "bar",
+    "icon": "folder",
+    "children": [
+      {
+        "path": "/bar/bar1",
+        "name": "高度(km)与气温(°C)变化关系",
+        "key": "bar.bar1"
+      },
+      {
+        "path": "/bar/bar2",
+        "name": "柱状图动画延迟",
+        "key": "bar.bar2"
+      }
+    ]
+  },
+  {
+    "path": "/radar",
+    "name": "雷达图",
+    "key": "radar",
+    "icon": "folder",
+    "children": [
+      {
+        "path": "/radar/radar1",
+        "name": "基础雷达图",
+        "key": "radar.radar1"
+      },
+      {
+        "path": "/radar/radar2",
+        "name": "AQI - 雷达图",
+        "key": "radar.radar2"
+      }
+    ]
+  }
+]
