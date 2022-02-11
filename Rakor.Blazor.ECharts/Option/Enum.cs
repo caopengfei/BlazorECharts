@@ -67,8 +67,8 @@ namespace Rakor.Blazor.ECharts.Option.Enum
     [JsonConverter(typeof(CustomEnumConverter))]
     public enum PositionY
     {
-        Start,
-        End
+        Left,
+        Right
     }
 
     [JsonConverter(typeof(CustomEnumConverter))]
